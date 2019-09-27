@@ -7,9 +7,11 @@ tags:
   - anthos
 ---
 
+{{< figure src="./anthos-bridge-between-on-prem-and-gcp.jpg" alt="Anthos, the bridge between on-prem and Google Cloud" caption="Anthos, the bridge between on-prem and Google Cloud" >}}
+
 ## Introduction
 
-It's no secret that Google Cloud is still catching up with AWS and Azure in terms of market share. Anthos, first announced at Google Cloud Next in April 2019, is Google Cloud's gambit to gain market share in the enterprise.
+It's no secret that Google Cloud is still catching up with AWS and Azure in terms of market share. [Anthos](https://cloud.google.com/anthos/), first announced at Google Cloud Next in April 2019, is Google Cloud's gambit to gain market share in the enterprise.
 
 Even as of this year, [80% of workloads are still on-premises](https://www.ibm.com/blogs/cloud-computing/2019/03/05/20-percent-cloud-transformation/). With Anthos, Google is hitting this need by giving enterprises a _uniform interface_ that abstracts away the complexity of deploying to on-premises and/or in the cloud.
 

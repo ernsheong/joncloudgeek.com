@@ -1,0 +1,12 @@
+article figure {
+  width: 100%;
+  text-align: center;
+}
+
+article figcaption {
+  text-align: center;
+}
+
+twitter-widget {
+  margin: 0 auto;
+}
