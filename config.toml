@@ -30,6 +30,7 @@ googleAnalytics = "UA-49702772-5" # Enable Google Analytics by entering your tra
   highlightColor = "#4285f4" # Override highlight color
   customCSS = ["css/custom.css"] # Include custom CSS files
   # customJS = ["js/custom.js"] # Include custom JS files
+  images = ["img/clouds.jpg"]
 
 [Params.sidebar]
   home = "right" # Configure layout for home page
