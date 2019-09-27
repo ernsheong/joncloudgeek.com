@@ -2,6 +2,8 @@
 title: "What is Anthos by Google Cloud?"
 description: "Anthos is Google Cloud’s gambit to gain market share in the enterprise."
 date: 2019-09-27T15:37:50+08:00
+images:
+- blog/what-is-anthos-by-google-cloud/anthos-bridge-between-on-prem-and-gcp.jpg
 draft: false
 tags:
   - google cloud
@@ -17,6 +19,8 @@ It's no secret that Google Cloud is still catching up with AWS and Azure in term
 Even as of this year, [80% of workloads are still on-premises](https://www.ibm.com/blogs/cloud-computing/2019/03/05/20-percent-cloud-transformation/). With Anthos, Google is hitting this need by giving enterprises a _uniform interface_ that abstracts away the complexity of deploying to on-premises and/or in the cloud.
 
 In other words, Anthos is [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine) deployed either on-premises or in the cloud (including third-party clouds like AWS and Azure). As far as enterprise developers are concerned, everything should be running on containers, and where these containers end up at (on-premises or cloud) is just a matter of configuration on Anthos. It brings enterprises toward the utopia of write once, run anywhere, without learning diffirent environments and APIs.
+
+{{< figure src="./anthos.png" alt="Anthos by Google Cloud" caption="Anthos by Google Cloud" width="300" >}}
 
 ## Anthos Components
 
