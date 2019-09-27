@@ -4,6 +4,7 @@ description: "Anthos is Google Cloud’s gambit to gain market share in the ente
 date: 2019-09-27T15:37:50+08:00
 images:
 - blog/what-is-anthos-by-google-cloud/anthos-bridge-between-on-prem-and-gcp.jpg
+summary: Anthos is Google Kubernetes Engine (GKE) deployed to both on-premises or in the cloud. But it comes with an enterprise-only price tag.
 draft: false
 tags:
   - google cloud
@@ -18,7 +19,7 @@ It's no secret that Google Cloud is still catching up with AWS and Azure in term
 
 Even as of this year, [80% of workloads are still on-premises](https://www.ibm.com/blogs/cloud-computing/2019/03/05/20-percent-cloud-transformation/). With Anthos, Google is hitting this need by giving enterprises a _uniform interface_ that abstracts away the complexity of deploying to on-premises and/or in the cloud.
 
-In other words, Anthos is [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine) deployed either on-premises or in the cloud (including third-party clouds like AWS and Azure). As far as enterprise developers are concerned, everything should be running on containers, and where these containers end up at (on-premises or cloud) is just a matter of configuration on Anthos. It brings enterprises toward the utopia of write once, run anywhere, without learning diffirent environments and APIs.
+In other words, Anthos is [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine) deployed either on-premises or in the cloud (including third-party clouds like AWS and Azure). As far as enterprise developers are concerned, everything should be running on **containers**, and where these containers end up at (on-premises or cloud) is just a matter of configuration on Anthos. It brings enterprises toward the utopia of write once, run anywhere, without learning diffirent environments and APIs.
 
 {{< figure src="./anthos.png" alt="Anthos by Google Cloud" caption="Anthos by Google Cloud" width="300" >}}
 
@@ -40,6 +41,12 @@ GKE is Google Cloud's managed Kubernetes offering. Given that Kubernetes origina
 1. **Kubernetes apps on GCP Marketplace**<br>You can even install Kubernetes containers found in GCP Marketplace to your GKE On-Prem.
 1. **Traffic Director**<br>GCP's fully-managed traffic control plane for service meshes. This gives you an idea of what it does: "Traffic Director allows you to easily deploy global load balancing across clusters and VM instances in multiple regions and offload health checking from the sidecar proxies" (https://cloud.google.com/traffic-director/docs/traffic-director-concepts)
 
+## Technicals
+
+GKE On-Prem requires a VMware vSphere environment, along with a layer 4 network load balancer.
+
+As for site-to-site connection between on-premises and cloud, the options are either Cloud VPN, Dedicated Interconnect or Partner Interconnect.
+
 ## Pricing
 
 Here's where we get into the juicier parts of the discussion. The [Anthos Pricing page](https://cloud.google.com/anthos/pricing/) redirects to "Contact sales". That implies $$$$.
@@ -60,15 +67,27 @@ There's a problem with that. I think that even the largest of Malaysian enterpri
 
 The promise of Anthos sounds compelling, but I can't speak on behalf of Enterprise.
 
+### No new hardware necessary
+
+Anthos is a software solution. Companies do not need to buy hardware from Google in order to leverage Anthos. They can start with their existing on-premises machines.
+
+### On-Premises
+
 Writing once and running it anywhere you choose, here today, there tomorrow, and back here again the day after, is now possible with Anthos. Enterprises can plan out their timelines for gradual migration to the cloud, while maintaining the ability to keep workloads on-premises for compliance and other reasons.
 
 And they can now do all this using the cutting-edge managed Kubernetes offering from Google, with Istio and other bells and whistles, while maintaining presence on-premises. It's an enterprise's dream, perhaps?
 
+### Development and Operations
+
+Developers get to run GKE on-premises. Operations gets a single unified dashboard and configuration for their applications, not to mention a whole lot less work mitigating server problems given that Kubernetes is more robust and has self-healing and auto-scaling capabilities.
+
+### Security
+
+Anthos Config Management allows centralized cluster configuration. Istio provides code-free securing of microservices.
+
 ## The Bad
 
-### Pricing for non-Enterprise
-
-Well, the pricing is just unappealing for non-Enterprise users. Having to fork out such money for GKE add-ons branded as Anthos is a big no-no. It makes sense for Enterprise, but not for non-Enterprise users.
+### GKE vs Anthos Lines Blurred
 
 Over the past few weeks the lines between what is GKE and what is Anthos have blurred. It seems that some parts of GKE have been absorbed into Anthos and placed behind the Anthos paywall, such as the examples shown below. I believe that at this stage, GCP is still trying to figure out the exact pricing of GKE add-ons for non-Anthos users, but it could also be the case that GCP effectively draws a strict line between vanilla GKE and Anthos-branded GKE add-ons, requiring payment to use the latter.
 
@@ -80,7 +99,7 @@ When Cloud Run was announced, it had an option in the Console to deploy to "Clou
 
 {{< figure src="./cloud-run-for-anthos.png" alt="Cloud Run for Anthos" width="500" caption="You must have Cloud Run for Anthos enabled in your cluster. Do I have to pay for that?" >}}
 
-### Binary Authorization, not available on GKE
+### Binary Authorization, not available on GKE without Anthos?
 
 With [Binary Authorization](https://cloud.google.com/binary-authorization/), images are to be signed by trusted authorities during development, and these signatures are validated on deployment. This was touted as a security feature at a local Cloud Summit event recently. But it seems clear right now that this feature will only be part of an Anthos subscription:
 
@@ -94,7 +113,21 @@ All these does not harbinger well for GKE itself. Google wants to reach out to t
 
 ## Comparison with AWS and Azure offerings
 
-A great topic for another blog post. Stay tuned!
+From what I gather, the VMware vSphere requirement plays well with existing setups on-premises. In other words, customers would not need to purchase new hardware in order to leverage Anthos.
+
+In contrast, [AWS Outposts](https://aws.amazon.com/outposts/) and [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/) require you to purchase hardware from AWS or Azure in order to leverage their hybrid cloud solutions.
+
+AWS Outposts [FAQs](https://aws.amazon.com/outposts/faqs/):
+
+> Q: Can I reuse my existing servers in an Outpost?
+
+> A: No, AWS Outposts leverages AWS designed infrastructure, and is only supported on proprietary AWS hardware that is optimized for secure, high-performance, and reliable operations.
+
+Azure Stack - [How to Buy](https://azure.microsoft.com/en-us/overview/azure-stack/how-to-buy/):
+
+> Azure Stack is sold as an integrated hardware system, with software pre-installed on validated hardware.
+
+However, it seems that with AWS Outposts and Azure Stack you can use many more service offerings from AWS and Azure, whilst with Anthos you are limited to basically GKE On-Prem and GKE itself.
 
 ## Summary
 
@@ -106,5 +139,6 @@ At the same time, with Anthos, Google Cloud risks alienating users of GKE by wit
 
 1. What’s Going on with GKE and Anthos? https://bravenewgeek.com/whats-going-on-with-gke-and-anthos/
 1. Everything You Want To Know About Anthos - Google's Hybrid And Multi-Cloud Platform https://www.forbes.com/sites/janakirammsv/2019/04/14/everything-you-want-to-know-about-anthos-googles-hybrid-and-multi-cloud-platform/
+1. How Google’s Anthos Is Different from AWS and Azure Hybrid Clouds https://www.datacenterknowledge.com/google-alphabet/how-google-s-anthos-different-aws-and-azure-hybrid-clouds
 1. Introducing Anthos: An entirely new platform for managing applications in today's multi-cloud world https://cloud.google.com/blog/topics/hybrid-cloud/new-platform-for-managing-applications-in-todays-multi-cloud-world
 1. Anthos simplifies application modernization with managed service mesh and serverless for your hybrid cloud https://cloud.google.com/blog/topics/hybrid-cloud/anthos-simplifies-application-modernization-with-managed-service-mesh-and-serverless-for-your-hybrid-cloud
