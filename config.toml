@@ -8,7 +8,7 @@ googleAnalytics = "" # Enable Google Analytics by entering your tracking id
 
 [Author] # Used in authorbox
   name = "Jonathan Lin"
-  bio = "Jonathan Lin is on a journey to become a Cloud Architect. Join him on his journey by keeping up with the posts here!"
+  bio = "Jonathan Lin is on a journey to become a Cloud Architect across multiple clouds. Join him on his journey by keeping up with the posts here!"
   avatar = "img/avatar.jpg"
 
 [Params]

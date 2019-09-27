@@ -35,7 +35,7 @@ GKE is Google Cloud's managed Kubernetes offering. Given that Kubernetes origina
 
 ## Pricing
 
-Here's where we get into the juicier parts of the discussion. The [Anthos Pricing page](https://cloud.google.com/anthos/pricing/) redirects to "Contact sales". That implies: $$$$.
+Here's where we get into the juicier parts of the discussion. The [Anthos Pricing page](https://cloud.google.com/anthos/pricing/) redirects to "Contact sales". That implies $$$$.
 
 However, in [Anthos FAQ](https://cloud.google.com/anthos/docs/faq/), we get an indication of the pricing:
 
@@ -45,11 +45,9 @@ However, in [Anthos FAQ](https://cloud.google.com/anthos/docs/faq/), we get an i
 
 > The pricing listed above is in addition to core infrastructure charges including, but not limited to CPU, networking, infrastructure support, etc.
 
-In other words, it starts from $10,000 per month.
+In other words, it starts from **$10,000 per month**.
 
 There's a problem with that. I think that even the largest of Malaysian enterprises would not want to spend RM45,000/month on something like this. The target market for Anthos is not just enterprise, but enterprise with a big E, for which $10,000/month is pocket change. Think the likes of HSBC, which Google shows off as an early customer in the [Anthos launch blog post](https://cloud.google.com/blog/topics/hybrid-cloud/new-platform-for-managing-applications-in-todays-multi-cloud-world)
-
-So Anthos is really not for the startups and small businesses of the world.
 
 ## The Good
 
@@ -57,7 +55,7 @@ The promise of Anthos sounds compelling, but I can't speak on behalf of Enterpri
 
 Writing once and running it anywhere you choose, here today, there tomorrow, and back here again the day after, is now possible with Anthos. Enterprises can plan out their timelines for gradual migration to the cloud, while maintaining the ability to keep workloads on-premises for compliance and other reasons.
 
-And they can now do all this while the industry-leading managed-Kubernetes offering from Google Cloud, with Istio etc., while maintaining presence on-premises. It's an enterprise's dream, perhaps?
+And they can now do all this using the cutting-edge managed Kubernetes offering from Google, with Istio and other bells and whistles, while maintaining presence on-premises. It's an enterprise's dream, perhaps?
 
 ## The Bad
 
