@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "personal-171510"
+  },
+  "targets": {
+    "personal-171510": {
+      "hosting": {
+        "joncloudgeek": [
+          "joncloudgeek"
+        ]
+      }
+    }
   }
 }
