@@ -61,9 +61,11 @@ And they can now do all this using the cutting-edge managed Kubernetes offering 
 
 ### Cloud Run on GKE is no more?
 
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">What&#39;s the verdict now? Lay devs can&#39;t run Cloud Run in their own GKE cluster without an Anthos subscription? Not sure if many are affected, but the choice was nice to have, and now gone?</p>&mdash; Jonathan Lin 👨🏻‍💻🇲🇾 (@ernsheong) <a href="https://twitter.com/ernsheong/status/1177415240092241921?ref_src=twsrc%5Etfw">September 27, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 When Cloud Run was announced, it had an option in the Console to deploy to "Cloud Run on GKE". Today, it just says "Cloud Run for Anthos". Cloud Run is in Beta, so Google has the right to make such changes, but the trend seems to be making the add-on features of GKE a part of Anthos, which presumably requires a subscription of some sort (this is unclear in the documentation).
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">What&#39;s the verdict now? Lay devs can&#39;t run Cloud Run in their own GKE cluster without an Anthos subscription? Not sure if many are affected, but the choice was nice to have, and now gone?</p>&mdash; Jonathan Lin 👨🏻‍💻🇲🇾 (@ernsheong) <a href="https://twitter.com/ernsheong/status/1177415240092241921?ref_src=twsrc%5Etfw">September 27, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+{{< figure src="./cloud-run-for-anthos.png" alt="Cloud Run for Anthos" width="500" caption="You must have Cloud Run for Anthos enabled in your cluster. Do I have to pay for that?" >}}
 
 ### Binary Authorization, not available on GKE
 
