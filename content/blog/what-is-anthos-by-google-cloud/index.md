@@ -1,5 +1,6 @@
 ---
-title: "What Is Anthos? [Google Cloud]"
+title: "What is Anthos by Google Cloud?"
+description: "Anthos is Google Cloud’s gambit to gain market share in the enterprise."
 date: 2019-09-27T15:37:50+08:00
 draft: false
 tags:
@@ -7,7 +8,7 @@ tags:
   - anthos
 ---
 
-{{< figure src="./anthos-bridge-between-on-prem-and-gcp.jpg" alt="Anthos, the bridge between on-prem and Google Cloud" caption="Anthos, the bridge between on-prem and Google Cloud" >}}
+{{< figure src="./anthos-bridge-between-on-prem-and-gcp.jpg" alt="Anthos, the bridge between on-prem and Google Cloud" caption="Anthos, the bridge between on-prem and Google Cloud." >}}
 
 ## Introduction
 
@@ -19,12 +20,12 @@ In other words, Anthos is [Google Kubernetes Engine (GKE)](https://cloud.google.
 
 ## Anthos Components
 
-Anthos is really a branding name for a collection of software components rather than a piece of software by itself. Collectively, the components work together to achieve the above. Let's take a look at the components that make up Anthos (according to their [documentation](https://cloud.google.com/anthos/docs/components)):
+Anthos is really a **branding name for a collection of software components** rather than a piece of software by itself. Collectively, the components work together to achieve the above. Let's take a look at the components that make up Anthos (according to their [documentation](https://cloud.google.com/anthos/docs/components)):
 
 1. **GKE On-Prem**<br>
-I'll let the docs speak for itself: "GKE On-Prem is hybrid cloud software that brings Google Kubernetes Engine (GKE) to on-premises data centers. With GKE On-Prem, you can create, manage, and upgrade Kubernetes clusters in your on-prem environment and connect them to Google Cloud Platform Console." (https://cloud.google.com/gke-on-prem/docs/overview)
+"GKE On-Prem is hybrid cloud software that brings Google Kubernetes Engine (GKE) to on-premises data centers. With GKE On-Prem, you can create, manage, and upgrade Kubernetes clusters in your on-prem environment and connect them to Google Cloud Platform Console." (https://cloud.google.com/gke-on-prem/docs/overview)
 1. **GKE**<br>
-GKE is Google Cloud's managed Kubernetes offering. Given that Kubernetes originated from Google, GKE is one of the best managed offerings for Kubernetes out there.
+GKE is Google Cloud's managed Kubernetes offering. Given that Kubernetes originated from Google, GKE is arguably the best managed offering for Kubernetes out there.
 1. **Migrate for Anthos**<br>
 "A tool to containerize existing applications to run on GKE." Basically a fancy name for scripts that help you generate Kubernetes yaml configs for your existing VMs.
 1. **Multi-cluster management overview**<br> A lacklustre name to represent a collection of tools to connect between your GKE On-Prem with other clusters on the Google Cloud Platform.
@@ -49,7 +50,7 @@ However, in [Anthos FAQ](https://cloud.google.com/anthos/docs/faq/), we get an i
 
 In other words, it starts from **$10,000 per month**.
 
-There's a problem with that. I think that even the largest of Malaysian enterprises would not want to spend RM45,000/month on something like this. The target market for Anthos is not just enterprise, but enterprise with a big E, for which $10,000/month is pocket change. Think the likes of HSBC, which Google shows off as an early customer in the [Anthos launch blog post](https://cloud.google.com/blog/topics/hybrid-cloud/new-platform-for-managing-applications-in-todays-multi-cloud-world)
+There's a problem with that. I think that even the largest of Malaysian enterprises would not want to spend RM45,000/month on something like this. The target market for Anthos is not just enterprise, but enterprise with a big E, for which $10,000/month is pocket change. Think the likes of HSBC, which Google shows off as an early customer in the [Anthos launch blog post](https://cloud.google.com/blog/topics/hybrid-cloud/new-platform-for-managing-applications-in-todays-multi-cloud-world).
 
 ## The Good
 
@@ -60,6 +61,12 @@ Writing once and running it anywhere you choose, here today, there tomorrow, and
 And they can now do all this using the cutting-edge managed Kubernetes offering from Google, with Istio and other bells and whistles, while maintaining presence on-premises. It's an enterprise's dream, perhaps?
 
 ## The Bad
+
+### Pricing for non-Enterprise
+
+Well, the pricing is just unappealing for non-Enterprise users. Having to fork out such money for GKE add-ons branded as Anthos is a big no-no. It makes sense for Enterprise, but not for non-Enterprise users.
+
+Over the past few weeks the lines between what is GKE and what is Anthos have blurred. It seems that some parts of GKE have been absorbed into Anthos and placed behind the Anthos paywall, such as the examples shown below. I believe that at this stage, GCP is still trying to figure out the exact pricing of GKE add-ons for non-Anthos users, but it could also be the case that GCP effectively draws a strict line between vanilla GKE and Anthos-branded GKE add-ons, requiring payment to use the latter.
 
 ### Cloud Run on GKE is no more?
 
@@ -87,7 +94,7 @@ A great topic for another blog post. Stay tuned!
 
 ## Summary
 
-Anthos is Google Cloud's gambit to lure enterprises to use Google Cloud with a single consistent interface for application deployment to both on-premises or in the cloud. Google Cloud is betting that containers will be king in the enterprise world. If Google is right, the rewards via Anthos are great, and Anthos has the potential to be the Trojan Horse of the cloud wars.
+Anthos is Google Cloud's gambit to lure enterprises to use Google Cloud with a single consistent interface for application deployment to both on-premises or in the cloud. Google Cloud is betting that containers will be king in the enterprise world. If Google plays it right, the rewards via Anthos will be great, and Anthos has the potential to be the Trojan Horse of the cloud wars.
 
 At the same time, with Anthos, Google Cloud risks alienating users of GKE by withholding Anthos-only features from GKE users. GKE is one of Google Cloud's strongest offerings. Google Cloud should not handicap GKE in other to hide features behind Anthos.
 
