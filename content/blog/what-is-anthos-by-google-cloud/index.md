@@ -135,7 +135,7 @@ Anthos is Google Cloud's gambit to lure enterprises to use Google Cloud with a s
 
 At the same time, with Anthos, Google Cloud risks alienating users of GKE by withholding Anthos-only features from GKE users. GKE is one of Google Cloud's strongest offerings. Google Cloud should not handicap GKE in other to hide features behind Anthos.
 
-## Relevant Links
+## Related Links
 
 1. What’s Going on with GKE and Anthos? https://bravenewgeek.com/whats-going-on-with-gke-and-anthos/
 1. Everything You Want To Know About Anthos - Google's Hybrid And Multi-Cloud Platform https://www.forbes.com/sites/janakirammsv/2019/04/14/everything-you-want-to-know-about-anthos-googles-hybrid-and-multi-cloud-platform/
