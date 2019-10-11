@@ -2,13 +2,15 @@
 title: "What Cloud Native Is and Isn't"
 description: "Cloud native is the new buzzword in town. What is it exactly?"
 date: 2019-10-11T08:00:00+08:00
-# images:
-# - blog/what-is-anthos-by-google-cloud/anthos-bridge-between-on-prem-and-gcp.jpg
+images:
+- blog/what-cloud-native-is-and-isnt/high-performance-in-cloud.jpg
 summary: Cloud native is a loaded phrase that can mean many things to many people. In this article, we take on the challenge of gleaning reasonable guiding principles and traits of cloud native infrastructure and applications.
 draft: false
 tags:
   - cloud native
 ---
+
+{{< figure src="./high-performance-in-cloud.jpg" alt="Fighter jets in the sky" caption="High performance applications in the cloud." >}}
 
 ## Introduction
 
@@ -18,7 +20,7 @@ tags:
 
 Let's stretch this citizen-country analogy a bit further. There are many countries, and many citizens who, in most cases, belong to only one particular country. Not all countries are the same, though generally they share certain characteristics that make them a country: flag, immigration, government, shared culture/language. Likewise there are probably many ways to do _**cloud native infrastructure**_, and while there may be differences in implementation and details, they share the same distinctive set of characteristics and principles.
 
-Secondly, a citizen of a particular country may visit another country and live there for many years. However, even after being in another country for a decade, that citizen would probably still say that he is more at home in his home country, and able to better take advantage of the benefits of citizenship that are bestowed to him at home. Likewise, a particular ***cloud native application*** is always written in such a way that the application is more at home and _able to take fuller advantage of the infrastructure_ in a certain infrastructure than in another infrastructure.
+Secondly, a citizen of a particular country may visit another country and live there for many years. However, even after being in another country for a decade, that citizen would probably still say that he is more at home in his home country, and able to better take advantage of the benefits of citizenship that are bestowed to him at home. Likewise, a particular ***cloud native application*** is always written in such a way that the application is more at home and _able to take fuller advantage of the infrastructure_ in a certain *native* infrastructure than in another infrastructure.
 
 In essence, when we talk about cloud native, we need to address what it means for both **infrastructure** and **applications** to be cloud native.
 
@@ -77,9 +79,11 @@ Kubernetes is the poster child of cloud native infrastructure which checks all t
 A cloud native application is designed to run on a cloud native infrastructure platform with the following four key traits:
 
 1. **Cloud native applications are resilient**. *Resiliency* is achieved when failures are treated as the norm rather than something to be avoided. The application takes advantage of the dynamic nature of the platform and should be able to recover from failure.
-1. **Cloud native applications are agile**. *Agility* allows the application to be deployed quickly with short iterations.
-1. **Cloud native applications are operable**. *Operability* concerns itself with the qualities of a system that make it work well over its lifetime, not just at deployment phase. An operable application is not only reliable from the end-user point of view, but also from the vantage of the operations team. Examples of operable software is one which operates without needing application restarts or server reboots, or hacks and workarounds that are required to keep the software running.
+1. **Cloud native applications are agile**. *Agility* allows the application to be deployed quickly with short iterations. Often this requires applications to be written as microservices rather than monoliths, but having microservices is not a requirement for cloud native applications.
+1. **Cloud native applications are operable**. *Operability* concerns itself with the qualities of a system that make it work well over its lifetime, not just at deployment phase. An operable application is not only reliable from the end-user point of view, but also from the vantage of the operations team. Examples of operable software is one which operates without needing application restarts or server reboots, or hacks and workarounds that are required to keep the software running. Often this means that the application itself should expose a health check in order for the infrastructure it is running on to query the state of the application.
 1. **Cloud native applications are observable**. *Observability* provides answers to questions about application state. Operators and engineers should not need to make conjectures about what is going on in the application. Application logging and metrics are key to making this happen.
+
+The above list suggests that cloud native applications impact the infrastructure that would be necessary to run such applications. Many responsibilities that have been traditionally handled by infrastucture have moved into the  application realm.
 
 ## Summary
 
