@@ -15,3 +15,11 @@ article figcaption {
 twitter-widget {
   margin: 0 auto;
 }
+
+/* Overrride logo uppercase */
+.logo__title {
+  text-transform: none !important;
+}
+.logo__tagline {
+  text-transform: uppercase !important;
+}

@@ -1,5 +1,5 @@
 baseurl = "https://joncloudgeek.com"
-title = "Jon Cloud Geek"
+title = "JonCloudGeek"
 languageCode = "en-us"
 paginate = "10" # Number of posts per page
 theme = "mainroad"
