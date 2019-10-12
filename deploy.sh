@@ -1,3 +1,5 @@
 #!/bin/bash
 hugo --cleanDestinationDir
-firebase deploy
+
+source .secret/env.sh
+firebase deploy --token "$FIREBASE_TOKEN"
