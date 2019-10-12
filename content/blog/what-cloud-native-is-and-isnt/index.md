@@ -1,7 +1,7 @@
 ---
 title: "What Cloud Native Is and Isn't"
 description: "Cloud native is the new buzzword in town. What is it exactly?"
-date: 2019-10-11T08:00:00+08:00
+date: 2019-10-12T08:00:00+08:00
 images:
 - blog/what-cloud-native-is-and-isnt/high-performance-in-cloud.jpg
 summary: Cloud native is a loaded phrase that can mean many things to many people. In this article, we take on the challenge of gleaning reasonable guiding principles and traits of cloud native infrastructure and applications.
