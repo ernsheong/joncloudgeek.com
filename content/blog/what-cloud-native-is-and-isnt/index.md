@@ -73,7 +73,9 @@ In other words, cloud native infrastructure behaves very much like a platform-as
 
 While the CNCF would like to advocate for "open-source" and "vendor-neutral" solutions as its definition of cloud native (see above), I think that such a definition would preclude what many in industry already consider to be cloud native. Examples of this are AWS Lambda, AWS Elastic Container Service (ECS), AWS Fargate, which are all decidedly proprietary with no open source equivalents, but many still consider them to be cloud native. Hence I think the list is a good guiding principle on what is cloud native in general.
 
-Kubernetes is the poster child of cloud native infrastructure which checks all the boxes above while being open-source and vendor neutral. However, we would be very wrong to conclude that Kubernetes is the only way to having a cloud native infrastructure. In fact, I would even dare to say that trying to manage your own Kubernetes is not in line with the principles of cloud native, because in many ways you are managing it *yourself*.
+**Kubernetes** is the poster child of cloud native infrastructure which checks all the boxes above while being open-source and vendor neutral. However, we would be very wrong to conclude that Kubernetes is the only way to having a cloud native infrastructure. In fact, I would even dare to say that trying to manage your own Kubernetes is not in line with the principles of cloud native, because in many ways you are managing it *yourself*.
+
+{{< figure src="./kubernetes.svg" alt="Kubernetes logo" caption="Kubernetes" width="180">}}
 
 ### What Cloud Native Applications _Are_
 
