@@ -1,6 +1,5 @@
 {
   "hosting": {
-    "target": "joncloudgeek",
     "public": "public",
     "ignore": [
       "firebase.json",
