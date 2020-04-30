@@ -3,7 +3,7 @@ title: "Books"
 description: "Technical books which I have written"
 toc: false
 authorbox: false
-menu: main
+menu: ["main", "footer"]
 ---
 
 View all my ebooks on sale at **https://gumroad.com/joncloudgeek**.

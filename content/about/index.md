@@ -3,7 +3,7 @@ title: "About"
 description: "Anthos is Google Cloud’s gambit to gain market share in the enterprise."
 toc: false
 authorbox: false
-menu: main
+menu: ["main", "footer"]
 ---
 
 {{< figure src="/img/avatar.jpg" alt="Jonathan Lin" caption="Jon the Cloud Geek" width="200">}}
