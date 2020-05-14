@@ -12,7 +12,7 @@ View all my ebooks on sale at **https://gumroad.com/joncloudgeek**.
 
 A Comprehensive Guide to Deploying Node.js on Google Cloud Platform
 
-<a href="https://gumroad.com/l/yfSTq" target="_blank">
+<a href="https://gumroad.com/l/yfSTq" target="_blank" style="display:inline-block;margin-bottom:3rem;">
   <img src="/img/book-deploy-nodejs-gcp.png" width="300">
 </a>
 
@@ -20,7 +20,7 @@ A Comprehensive Guide to Deploying Node.js on Google Cloud Platform
 
 The Missing Lecture Notes for Passing the Professional Cloud Architect Exam
 
-<a href="https://gumroad.com/l/XGUpa" target="_blank">
+<a href="https://gumroad.com/l/XGUpa" target="_blank" style="display:inline-block;margin-bottom:3rem;">
   <img src="/img/book-pca-study-guide.png" width="300">
 </a>
 
