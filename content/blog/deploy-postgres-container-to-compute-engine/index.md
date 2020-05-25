@@ -1,5 +1,5 @@
 ---
-title: Cost-effective way to run a Postgres instance in Google Cloud
+title: Run a Postgres instance for cheap in Google Cloud
 description: Run a Postgres container in Compute Engine in the easiest way possible.
 date: 2020-05-25T08:00:00+08:00
 images:
