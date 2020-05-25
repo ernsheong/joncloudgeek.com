@@ -147,7 +147,7 @@ By default, post 5432 is blocked in a Google Cloud project. To allow connections
 
 In this blog post, we have successfully created a Postgres instance from a container image in Compute Engine. We configured a firewall rule to connect to that instance from our local machine using a network tag, and we removed that network tag to lock up access to that instance. We also used the instance External IP to connect to it and restore dumped SQL data from our old instance (with the firewall rule in place).
 
-If you are confident about the needs and performance of your application, you can choosed to downgrade the instance to `f1-micro` to save another $2/month. Eventually GCP will come along and tell you that your instance is over-utilized (you can ignore or reject the warning). Note that all the risk is yours if your DB instance hangs because it is CPU-starved. There is an increased risk to cheap in the cloud.
+If you are confident about the needs and performance of your application, you can choose to downgrade the instance to `f1-micro` to save another $2/month. Eventually GCP will come along and tell you that your instance is over-utilized (you can ignore or reject the warning). Note that all the risk is yours if your DB instance hangs because it is CPU-starved. There is an increased risk to cheap in the cloud.
 
 Alternatively, there is a Postgres [**Google Click to Deploy**](https://console.cloud.google.com/marketplace/details/click-to-deploy-images/postgresql) option in the Marketplace. This will run Postgres in Debian OS, not a container. And you also cannot run it in an E2 instance (only N1 is supported). But it is probably more production ready, I presume.
 
