@@ -10,6 +10,7 @@ googleAnalytics = "UA-49702772-5" # Enable Google Analytics by entering your tra
   name = "Jonathan Lin"
   bio = 'Jonathan is on a journey to become a competent Cloud Architect, while teaching others to be the same. Check out his <a style="color:#4285f4;font-weight:bold;" href="/books/">books on cloud topics</a>!'
   avatar = "img/avatar.jpg"
+  twitter_url = "https://twitter.com/ernsheong"
 
 [Params]
   subtitle = "Jon's Technical Blog on All Things Cloud" # Subtitle of your site. Used in site header

@@ -7,6 +7,7 @@ images:
 summary: I explore running a Postgres instance in a container within Compute Engine for a fraction of what it costs to run in Cloud SQL.
 draft: false
 tags:
+  - google cloud
   - compute engine
   - postgres
   - container
