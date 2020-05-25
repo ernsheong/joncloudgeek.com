@@ -15,7 +15,6 @@ tags:
 
 {{< figure src="./meta.jpg" alt="An elephant" caption="Postgres in a container" >}}
 
-
 In this blog post, I will explore running a Postgres instance in a container within Compute Engine for a fraction of what it costs to run in Cloud SQL.
 
 ## Disclaimer
@@ -61,11 +60,11 @@ This blog post is for smaller projects that need Postgres but without Cloud SQL,
 
     1. Search for Postgres in Marketplace.
 
-        {{< figure src="./marketplace-postgres-search.png" alt="Check Deploy a container image to this VM instance." caption="Search for Postgres in Marketplace" width="750" >}}
+        {{< figure src="./marketplace-postgres-search.png" alt="Search for Postgres in Marketplace" caption="Search for Postgres in Marketplace" width="750" >}}
 
     1. Select a Postgres version.
 
-        {{< figure src="./marketplace-postgres-results.png" alt="Check Deploy a container image to this VM instance." caption="Choose your desired Postgres version" width="650" >}}
+        {{< figure src="./marketplace-postgres-results.png" alt="Choose your desired Postgres version" caption="Choose your desired Postgres version" width="650" >}}
 
     1. Click on **Show Pull Command** to retrieve the image URL.
 
@@ -73,7 +72,7 @@ This blog post is for smaller projects that need Postgres but without Cloud SQL,
 
         Notably you want to take note of the list of [Environment Variables](https://github.com/GoogleCloudPlatform/postgresql-docker/blob/master/11/README.md#environment-variables) understood by the container image.
 
-        {{< figure src="./show-pull-command.png" alt="Click on Show Pull Command" caption="Show Pull Command" width="650" >}}
+        {{< figure src="./show-pull-command.png" alt="Click on Show Pull Command" caption="Click on Show Pull Command" width="650" >}}
 
     1. Copy the image URL:
 
@@ -152,4 +151,4 @@ If you are confident about the needs and performance of your application, you ca
 
 Alternatively, there is a Postgres [**Google Click to Deploy**](https://console.cloud.google.com/marketplace/details/click-to-deploy-images/postgresql) option in the Marketplace. This will run Postgres in Debian OS, not a container. And you also cannot run it in an E2 instance (only N1 is supported). But it is probably more production ready, I presume.
 
-Also highly recommended is that you take [**scheduled snapshots**](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) of the boot disk of the DB instance. This is important for data recovery and backups. Usually Cloud SQL takes are of this for you, but we need to handle it ourselves since we are DIY-ing here.
+Also highly recommended is that you take [**scheduled snapshots**](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) of the boot disk of the DB instance. This is important for data recovery and backups. Usually Cloud SQL takes care of this for you, but we need to handle it ourselves since we are DIY-ing here.
