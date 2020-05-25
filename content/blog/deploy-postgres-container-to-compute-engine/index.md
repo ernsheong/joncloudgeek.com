@@ -43,7 +43,7 @@ This blog post is for smaller projects that need Postgres but without Cloud SQL,
 ## Create a compute instance running a Postgres container
 
 
-1. Click on **Create**.
+1. In the Compute Engine instances page in the Cloud Console, click on **Create**.
 
 {{< figure src="./click-create.png" alt="Click on Create" caption="Click Create" width="500" >}}
 
@@ -130,7 +130,7 @@ By default, post 5432 is blocked in a Google Cloud project. To allow connections
 
     {{< figure src="./get-external-ip.png" alt="Copy the external IP of the new instance" caption="Copy the external IP of the new instance" width="850" >}}
 
-1. Use the external IP to `psql` to the instance. When prompted, paste the DB password from `POSTGRES_PASSWORD` earlier.
+1. Use the external IP to `psql` to the instance. When prompted, paste the DB password from `POSTGRES_PASSWORD` earlier. The following command restores the dump back into the new DB instance:
 
        psql -h [EXTERNAL_IP] -U postgres mydb < mydb-dump.sql
 
@@ -138,11 +138,11 @@ By default, post 5432 is blocked in a Google Cloud project. To allow connections
 
     {{< figure src="./note-hostname.png" alt="Note the instance internal hostname" caption="Note the instance internal hostname" width="450" >}}
 
-    You can use this internal hostname to talk to this DB from within your VPC (another Compute Engine instance, Cloud Run, GKE, etc.). If that fails, then you can fallback to the **Internal IP** (previous step screenshot).
+    You can use this internal hostname to talk to this DB from within your VPC (another Compute Engine instance, Cloud Run, GKE, etc.). If that fails, then you can fallback to the **Internal IP** (see screenshot in Step 2).
 
-1. **[HIGHLY RECOMMENDED]** Stop (shut down) your DB instance and start it again. Connect to your instance via `psql` (note that the External IP would likely change). Check that all your data is intact.
+1. **[HIGHLY RECOMMENDED]** Stop (shut down) your DB instance and start it again. Connect to your instance via `psql` (note that the External IP will likely change). Check that all your data is intact.
 
-1. Remove `allow-postgres` from your instance **Network tags** (Edit, remove, Save). Your instance is no longer publicly accessible. By default, all internal network ports are open in Firewall rules.
+1. Remove `allow-postgres` from your instance **Network tags** (Edit, remove, Save). Your instance is no longer publicly accessible. By default, all internal network ports are open in Firewall rules so your DB instance remains accessible from within your VPC.
 
 ## Closing Remarks
 
