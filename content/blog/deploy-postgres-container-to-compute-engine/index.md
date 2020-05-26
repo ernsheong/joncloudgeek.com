@@ -46,11 +46,11 @@ This blog post is for smaller projects that need Postgres but without Cloud SQL,
 
     The `e2-micro` starts from **$6.11/month**.
 
-    {{< figure src="./select-e2.png" alt="Select E2 instance." caption="Select e2-micro" width="450" >}}
+    {{< figure src="./select-e2.png" alt="Select e2-micro" caption="Select e2-micro" width="450" >}}
 
 3. Check **Deploy a container image to this VM instance**. This will cause Compute Engine to only run the given image (next step) in the compute instance. Each compute instance can only run a single container using this method, and since we have sized our instance to only have just enough resources, this is totally fine.
 
-    {{< figure src="./check-container.png" alt="Check Deploy a container image to this VM instance." caption="Check this to deploy a container image to our Compute Engine instance" width="450" >}}
+    {{< figure src="./check-container.png" alt="Check Deploy a container image to this VM instance" caption="Check this to deploy a container image to our Compute Engine instance" width="450" >}}
 
 4. Choose a Postgres image from the Marketplace:
 
