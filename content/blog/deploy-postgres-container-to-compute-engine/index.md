@@ -31,12 +31,12 @@ This blog post is for smaller projects that need Postgres but without Cloud SQL,
 
 ## Get started
 
+<!-- MEDIUM_LIST_PRESERVE -->
 1. Sign up for [Google Cloud](https://console.cloud.google.com/). Free trial gives you $300 credits lasting one year.
 1. [Create a project](https://cloud.google.com/resource-manager/docs/creating-managing-projects#creating_a_project) to house your related resources.
 1. Navigate to [Compute Engine](https://console.cloud.google.com/compute/instances).
 
 ## Create a compute instance running a Postgres container
-
 
 1. In the Compute Engine instances page in the Cloud Console, click on **Create**.
 
@@ -52,23 +52,24 @@ This blog post is for smaller projects that need Postgres but without Cloud SQL,
 
     {{< figure src="./check-container.png" alt="Check Deploy a container image to this VM instance" caption="Check this to deploy a container image to our Compute Engine instance" width="450" >}}
 
-4. Choose a Postgres image from the Marketplace:
+4. Choose a Postgres image from the Marketplace.
 
-    1. Search for Postgres in Marketplace.
+    1. Search for Postgres in Marketplace:
 
         {{< figure src="./marketplace-postgres-search.png" alt="Search for Postgres in Marketplace" caption="Search for Postgres in Marketplace" width="750" >}}
 
-    1. Select a Postgres version.
+    1. Select a Postgres version:
 
         {{< figure src="./marketplace-postgres-results.png" alt="Choose your desired Postgres version" caption="Choose your desired Postgres version" width="650" >}}
 
-    1. Click on **Show Pull Command** to retrieve the image URL.
+    1. Click on **Show Pull Command** to retrieve the image URL:
+
+        {{< figure src="./show-pull-command.png" alt="Click on Show Pull Command" caption="Click on Show Pull Command" width="650" >}}
 
         If you click on **Get Started with Postgresql 11** it will bring you to a Github page with more (important) information.
 
         Notably you want to take note of the list of [Environment Variables](https://github.com/GoogleCloudPlatform/postgresql-docker/blob/master/11/README.md#environment-variables) understood by the container image.
 
-        {{< figure src="./show-pull-command.png" alt="Click on Show Pull Command" caption="Click on Show Pull Command" width="650" >}}
 
     1. Copy the image URL:
 
@@ -119,8 +120,10 @@ By default, post 5432 is blocked in a Google Cloud project. To allow connections
 
 1. Dump your current DB data:
 
-       pg_dump -d mydb -h db.example.com -U myuser --format=plain --no-owner --no-acl  \
-         | sed -E 's/(DROP|CREATE|COMMENT ON) EXTENSION/-- \1 EXTENSION/g' > mydb-dump.sql
+    ```bash
+    pg_dump -d mydb -h db.example.com -U myuser --format=plain --no-owner --no-acl  \
+      | sed -E 's/(DROP|CREATE|COMMENT ON) EXTENSION/-- \1 EXTENSION/g' > mydb-dump.sql
+    ```
 
 1. Get the external IP of our new DB:
 
@@ -128,7 +131,9 @@ By default, post 5432 is blocked in a Google Cloud project. To allow connections
 
 1. Use the external IP to `psql` to the instance. When prompted, paste the DB password from `POSTGRES_PASSWORD` earlier. The following command restores the dump back into the new DB instance:
 
-       psql -h [EXTERNAL_IP] -U postgres mydb < mydb-dump.sql
+    ```bash
+    psql -h [EXTERNAL_IP] -U postgres mydb < mydb-dump.sql
+    ```
 
 1. Your DB is now ready. When creating the DB, note the internal hostname for this instance:
 
@@ -140,7 +145,7 @@ By default, post 5432 is blocked in a Google Cloud project. To allow connections
 
 1. Remove `allow-postgres` from your instance **Network tags** (Edit, remove, Save). Your instance is no longer publicly accessible. By default, all internal network ports are open in Firewall rules so your DB instance remains accessible from within your VPC.
 
-## Closing Remarks
+## Summary
 
 In this blog post, we have successfully created a Postgres instance from a container image in Compute Engine. We configured a firewall rule to connect to that instance from our local machine using a network tag, and we removed that network tag to lock up access to that instance. We also used the instance External IP to connect to it and restore dumped SQL data from our old instance (with the firewall rule in place).
 
@@ -152,4 +157,4 @@ Also highly recommended is that you take [**scheduled snapshots**](https://cloud
 
 ## Disclaimer
 
-The information provided in this blog post is provided as is, without warranty of any kind, express or implied. By following the following steps in this blog post I do not guarantee that your database will be free from any sort of failures or data losses.
+The information provided in this blog post is provided as is, without warranty of any kind, express or implied. By following the steps outlined in this blog post I do not guarantee that your database will be free from any sort of failures or data losses.

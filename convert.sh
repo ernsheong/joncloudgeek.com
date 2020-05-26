@@ -2,6 +2,11 @@
 
 BUILD_DIR="export"
 
+if [ -z "${PLATFORM}" ]; then
+  echo Missing PLATFORM
+  exit 1
+fi
+
 if [ -z "${POST_PATH}" ]; then
   echo Missing POST_PATH
   exit 1
@@ -21,9 +26,9 @@ gsed -i 's/{{<\sfigure\ssrc="\(.*\)"\salt="\(.*\)"\scaption="\(.*\)".*}}/!\[\2\]
 # Remove captured width="..."
 gsed -i 's/"\swidth="[0-9]*//g' $TARGET
 
-# Strip all figcaption unless FIGCAPTION=1
-if [[ $FIGCAPTION != "1" ]]; then
-  gsed -i 's/<figcaption>.*<\/figcaption>//g' $TARGET
+# Strip all figcaption if medium
+if [[ $PLATFORM == "medium" ]]; then
+  gsed -i 's/<figcaption>.*<\/figcaption>/ \\/g' $TARGET
 fi
 
 # Replace relative path with absolute path
@@ -42,6 +47,7 @@ gawk '
 @include "join"
 BEGIN {
   print "## Table of Contents"
+  print "<!-- MEDIUM_LIST_PRESERVE -->"
 }
 {
   if (match($0,/##\s(.*)$/, a) != 0) {
@@ -51,13 +57,15 @@ BEGIN {
 }
 END { print "" } ' $TARGET > "$BUILD_DIR/toc"
 
-# Prepend Credits to TOC file
+# Prepend Credits to target
 BLOG_PATH=${POST_PATH%index.md}
 BLOG_PATH=${BLOG_PATH#content/}
-gsed -i "1s;^;This post was originally posted on [JonCloudGeek](https://joncloudgeek.com/${BLOG_PATH}).\n\n;" "$BUILD_DIR/toc"
+gsed -i "1s;^;\nThis post was originally posted on [JonCloudGeek](https://joncloudgeek.com/${BLOG_PATH}).\n\n;" $TARGET
 
-# Insert TOC file contents after first image
-gsed -i "/meta\.jpg/e cat ${BUILD_DIR}/toc" $TARGET
+if [[ "$PLATFORM" == "dev" ]]; then
+  # Insert TOC file contents before first image
+  gsed -i "/meta\.jpg/e cat ${BUILD_DIR}/toc" $TARGET
+fi
 
 # Promote books at end
 gawk '
@@ -66,5 +74,38 @@ gawk '
 ' $TARGET > $TARGET_TEMP
 mv $TARGET_TEMP $TARGET
 
-# Generate index.html
-pandoc -o "$BUILD_DIR/index.html" "$BUILD_DIR/index.md"
+#
+# MARKDOWN OPTIMIZED FOR MEDIUM
+#
+
+gawk '
+  BEGIN { preserve=0 }
+  /MEDIUM_LIST_PRESERVE/ { preserve=1 }
+
+   # Reset
+  /^$/ { preserve=0 }
+  /##/ { preserve=0 }
+
+  /INLINE_IMAGES_END/ { inline=0 }
+  /^\s*[0-9]*\.?\s+/ {
+    if (preserve == 0) {
+      gsub(/^\s*[0-9]\.\s+/, "")
+      gsub(/$/, "\n")
+    }
+  }
+  /##/ { gsub(/##/, "#") }
+  /^\s+/ {
+    if (preserve == 0) {
+      gsub(/^\s+/, "")
+    }
+  } 1
+' $TARGET > "$BUILD_DIR/medium.md"
+
+# Generate medium.html
+pandoc -o "$BUILD_DIR/medium.html" "$BUILD_DIR/medium.md"
+
+# Add image title as figcaption
+gsed -i 's/<img\ssrc=".*"\stitle="\(.*\)"\salt=".*"\s\/>/<figure>\0<figcaption>\1<\/figcaption><\/figure>/' "$BUILD_DIR/medium.html"
+
+# Replace <strong> with <b>
+gsed -i 's/strong>/b>/g' "$BUILD_DIR/medium.html"

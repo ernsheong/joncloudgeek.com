@@ -4,10 +4,10 @@ if [[ -z "$TITLE" ]]; then
   echo "Missing TITLE"
   exit 1
 fi
-if [[ -z "$HTML_CONTENT" ]]; then
-  echo "Missing HTML_CONTENT"
-  exit 1
-fi
+# if [[ -z "$HTML_CONTENT" ]]; then
+#   echo "Missing HTML_CONTENT"
+#   exit 1
+# fi
 if [[ -z "$CANONICAL_URL" ]]; then
   echo "Missing CANONICAL_URL"
   exit 1
@@ -16,6 +16,8 @@ if [[ -z "$TAGS" ]]; then
   echo "Missing TAGS"
   exit 1
 fi
+
+HTML_CONTENT=$(cat export/medium.html)
 
 USER_ID=$(curl -sS -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer ${TOKEN}" https://api.medium.com/v1/me \
  | jq -r '.data.id')
