@@ -17,10 +17,6 @@ tags:
 
 In this blog post, I will explore running a Postgres instance in a container within Compute Engine for a fraction of what it costs to run in Cloud SQL.
 
-## Disclaimer
-
-The information provided in this blog post is provided as is, without warranty of any kind, express or implied. By following the following steps in this blog post I do not guarantee that your database will be free from any sort of failures or data losses.
-
 ## Scenario
 
 [Cloud SQL](https://cloud.google.com/sql) is kind of expensive:
@@ -44,17 +40,17 @@ This blog post is for smaller projects that need Postgres but without Cloud SQL,
 
 1. In the Compute Engine instances page in the Cloud Console, click on **Create**.
 
-{{< figure src="./click-create.png" alt="Click on Create" caption="Click Create" width="500" >}}
+    {{< figure src="./click-create.png" alt="Click on Create" caption="Click Create" width="500" >}}
 
 2. Select the E2 series and the `e2-micro` machine type. E2 series is a cost-optimized series of compute engine instances. Read more about it in the [launch blog post](https://cloud.google.com/blog/products/compute/google-compute-engine-gets-new-e2-vm-machine-types). `e2-micro` is like `f1-micro`, but with **2 shared vCPU**, which is good enough for almost any small project, but not compromising like the weak `f1-micro` (which hangs / throttles when you try to do too much CPU work).
 
     The `e2-micro` starts from **$6.11/month**.
 
-{{< figure src="./select-e2.png" alt="Select E2 instance." caption="Select e2-micro" width="450" >}}
+    {{< figure src="./select-e2.png" alt="Select E2 instance." caption="Select e2-micro" width="450" >}}
 
 3. Check **Deploy a container image to this VM instance**. This will cause Compute Engine to only run the given image (next step) in the compute instance. Each compute instance can only run a single container using this method, and since we have sized our instance to only have just enough resources, this is totally fine.
 
-{{< figure src="./check-container.png" alt="Check Deploy a container image to this VM instance." caption="Check this to deploy a container image to our Compute Engine instance" width="450" >}}
+    {{< figure src="./check-container.png" alt="Check Deploy a container image to this VM instance." caption="Check this to deploy a container image to our Compute Engine instance" width="450" >}}
 
 4. Choose a Postgres image from the Marketplace:
 
@@ -76,7 +72,7 @@ This blog post is for smaller projects that need Postgres but without Cloud SQL,
 
     1. Copy the image URL:
 
-    {{< figure src="./copy-image-url.png" alt="Copy the image url" caption="Copy the image url" width="650" >}}
+        {{< figure src="./copy-image-url.png" alt="Copy the image url" caption="Copy the image url" width="650" >}}
 
 5. Paste the image URL into previous Compute Engine step. Set the minimum necessary environment variables. The default user is **postgres**. POSTGRES_DB is arguably unnecessary, you can already create it manually after instance creation.
 
@@ -93,6 +89,7 @@ This blog post is for smaller projects that need Postgres but without Cloud SQL,
 7. Some optional settings to configure:
 
     {{< figure src="./secure-boot.png" alt="Turn on Secure Boot" caption="Turn on Secure Boot" width="450" >}}
+
     {{< figure src="./uncheck-delete-boot-disk.png" alt="Uncheck Delete boot disk when instance is deleted" caption="Uncheck Delete boot disk when instance is deleted" width="450" >}}
 
 8. Click **Create**.
@@ -152,3 +149,7 @@ If you are confident about the needs and performance of your application, you ca
 Alternatively, there is a Postgres [**Google Click to Deploy**](https://console.cloud.google.com/marketplace/details/click-to-deploy-images/postgresql) option in the Marketplace. This will run Postgres in Debian OS, not a container. And you also cannot run it in an E2 instance (only N1 is supported). But it is probably more production ready, I presume.
 
 Also highly recommended is that you take [**scheduled snapshots**](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) of the boot disk of the DB instance. This is important for data recovery and backups. Usually Cloud SQL takes care of this for you, but we need to handle it ourselves since we are DIY-ing here.
+
+## Disclaimer
+
+The information provided in this blog post is provided as is, without warranty of any kind, express or implied. By following the following steps in this blog post I do not guarantee that your database will be free from any sort of failures or data losses.

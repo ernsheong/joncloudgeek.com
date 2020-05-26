@@ -1,12 +1,53 @@
 #!/bin/bash
 
-if [ -z "${POST_DIR}" ]; then
-  echo Missing POST_DIR
+BUILD_DIR="export"
+
+if [ -z "${POST_PATH}" ]; then
+  echo Missing POST_PATH
   exit 1
 fi
+echo "Converting from ${POST_PATH}..."
 
-echo $POST_DIR
-pandoc -o "${POST_DIR}/index.md" --wrap=preserve -t markdown "${POST_DIR}/index.html"
-sed -i'.bak' -e 's/{width=.*}//g' "$POST_DIR/index.md"
-sed -i'.bak' -e 's/\\\$/$/g' "$POST_DIR/index.md"
-sed -i'.bak' -e 's/(\.\//(https:\/\/joncloudgeek.com\/blog\/deploy-postgres-container-to-compute-engine\//g' "$POST_DIR/index.md"
+# Wipe and re-create build dir
+rm -r ${BUILD_DIR}
+mkdir $BUILD_DIR
+
+TARGET="$BUILD_DIR/index.md"
+TARGET_TEMP="$BUILD_DIR/temp"
+cp "$POST_PATH" $TARGET
+
+# Replace figure with markdown image format
+gsed -i 's/{{<\sfigure\ssrc="\(.*\)"\salt="\(.*\)"\scaption="\(.*\)".*}}/!\[\2\](\1)<figcaption>\3<\/figcaption>/' $TARGET
+
+# Replace relative path with absolute path
+gsed -i "s/(\.\//(https:\/\/joncloudgeek.com\/blog\/deploy-postgres-container-to-compute-engine\//" $TARGET
+
+# Wipe out Frontmatter
+gawk '
+  BEGIN { del=2 }
+  del == 0 { print }
+  /---/ { del -= 1 }
+' $TARGET > $TARGET_TEMP
+mv $TARGET_TEMP $TARGET
+
+# Create Table of Contents
+gawk '
+@include "join"
+BEGIN { print "## Table of Contents" }
+{
+  if (match($0,/##\s(.*)$/, a) != 0) {
+    split(a[1], b, " ")
+    printf "  * [%s](#%s)\n", a[1], joinlower(b,1,length(b),"-")
+  }
+}
+END { print "" } ' $TARGET > "$BUILD_DIR/toc"
+
+# Insert TOC after first image
+gsed -i "/meta\.jpg/e cat ${BUILD_DIR}/toc" $TARGET
+
+# Promote books at end
+gawk '
+  { print }
+  END { print "\n## My GCP Books\n\nIf you found this blog post helpful, kindly check out my [books on GCP topics](https://joncloudgeek.com/books/)!" }
+' $TARGET > $TARGET_TEMP
+mv $TARGET_TEMP $TARGET
