@@ -18,6 +18,8 @@ cp "$POST_PATH" $TARGET
 
 # Replace figure with markdown image format
 gsed -i 's/{{<\sfigure\ssrc="\(.*\)"\salt="\(.*\)"\scaption="\(.*\)".*}}/!\[\2\](\1)<figcaption>\3<\/figcaption>/' $TARGET
+# Remove captured width="..."
+gsed -i 's/<figcaption>\(.*\)"\swidth=".*<\/figcaption>/<figcaption>\1<\/figcaption>/' $TARGET
 
 # Replace relative path with absolute path
 gsed -i "s/(\.\//(https:\/\/joncloudgeek.com\/blog\/deploy-postgres-container-to-compute-engine\//" $TARGET
@@ -33,7 +35,9 @@ mv $TARGET_TEMP $TARGET
 # Create Table of Contents
 gawk '
 @include "join"
-BEGIN { print "## Table of Contents" }
+BEGIN {
+  print "## Table of Contents"
+}
 {
   if (match($0,/##\s(.*)$/, a) != 0) {
     split(a[1], b, " ")
@@ -42,7 +46,12 @@ BEGIN { print "## Table of Contents" }
 }
 END { print "" } ' $TARGET > "$BUILD_DIR/toc"
 
-# Insert TOC after first image
+# Prepend Credits to TOC file
+BLOG_PATH=${POST_PATH%index.md}
+BLOG_PATH=${BLOG_PATH#content/}
+gsed -i "1s;^;This post was originally posted on [JonCloudGeek](https://joncloudgeek.com/${BLOG_PATH}).\n\n;" "$BUILD_DIR/toc"
+
+# Insert TOC file contents after first image
 gsed -i "/meta\.jpg/e cat ${BUILD_DIR}/toc" $TARGET
 
 # Promote books at end
