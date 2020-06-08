@@ -27,19 +27,26 @@ In other words, Anthos is [Google Kubernetes Engine (GKE)](https://cloud.google.
 
 Anthos is really a **branding name for a collection of software components** rather than a piece of software by itself. Collectively, the components work together to achieve the above. Let's take a look at the components that make up Anthos (according to their [documentation](https://cloud.google.com/anthos/docs/components)):
 
-1. **GKE On-Prem**<br>
-"GKE On-Prem is hybrid cloud software that brings Google Kubernetes Engine (GKE) to on-premises data centers. With GKE On-Prem, you can create, manage, and upgrade Kubernetes clusters in your on-prem environment and connect them to Google Cloud Platform Console." (https://cloud.google.com/gke-on-prem/docs/overview)
-1. **GKE**<br>
-GKE is Google Cloud's managed Kubernetes offering. Given that Kubernetes originated from Google, GKE is arguably the best managed offering for Kubernetes out there.
-1. **Migrate for Anthos**<br>
-"A tool to containerize existing applications to run on GKE." Basically a fancy name for scripts that help you generate Kubernetes yaml configs for your existing VMs.
-1. **Multi-cluster management overview**<br> A lacklustre name to represent a collection of tools to connect between your GKE On-Prem with other clusters on the Google Cloud Platform.
-1. **Anthos Config Management**<br> The one configuration to rule over Kubernetes clusters both on-premises and in the cloud.
-1. **Istio**<br>"Istio is an open platform to connect, secure, control, and monitor microservices." (https://cloud.google.com/istio/docs/)
-1. **Stackdriver**<br>Google Cloud's managed logging and monitoring solution.
-1. **Cloud Run**<br>Deploy serverless containers. In the context of Anthos, you can deploy your serverless containers to GKE On-Prem or in the cloud.
-1. **Kubernetes apps on GCP Marketplace**<br>You can even install Kubernetes containers found in GCP Marketplace to your GKE On-Prem.
-1. **Traffic Director**<br>GCP's fully-managed traffic control plane for service meshes. This gives you an idea of what it does: "Traffic Director allows you to easily deploy global load balancing across clusters and VM instances in multiple regions and offload health checking from the sidecar proxies" (https://cloud.google.com/traffic-director/docs/traffic-director-concepts)
+* **GKE On-Prem**. "GKE On-Prem is hybrid cloud software that brings Google Kubernetes Engine (GKE) to on-premises data centers. With GKE On-Prem, you can create, manage, and upgrade Kubernetes clusters in your on-prem environment and connect them to Google Cloud Platform Console." (https://cloud.google.com/gke-on-prem/docs/overview)
+
+* **GKE**. GKE is Google Cloud's managed Kubernetes offering. Given that Kubernetes originated from Google, GKE is arguably the best managed offering for Kubernetes out there.
+
+* **Migrate for Anthos**. "A tool to containerize existing applications to run on GKE." Basically a fancy name for scripts that help you generate Kubernetes yaml configs for your existing VMs.
+
+* **Multi-cluster management overview**. A lacklustre name to represent a collection of tools to connect between your GKE On-Prem with other clusters on the Google Cloud Platform.
+
+* **Anthos Config Management**. The one configuration to rule over Kubernetes clusters both on-premises and in the cloud.
+
+* **Istio**. "Istio is an open platform to connect, secure, control, and monitor microservices." (https://cloud.google.com/istio/docs/)
+
+* **Stackdriver**. Google Cloud's managed logging and monitoring solution.
+
+* **Cloud Run**. Deploy serverless containers. In the context of Anthos, you can deploy your serverless containers to GKE On-Prem or in the cloud.
+
+* **Kubernetes apps on GCP Marketplace**. You can even install Kubernetes containers found in GCP Marketplace to your GKE On-Prem.
+
+* **Traffic Director**. GCP's fully-managed traffic control plane for service meshes. This gives you an idea of what it does: "Traffic Director allows you to easily deploy global load balancing across clusters and VM instances in multiple regions and offload health checking from the sidecar proxies" (https://cloud.google.com/traffic-director/docs/traffic-director-concepts)
+
 
 ## Technicals
 
@@ -137,8 +144,8 @@ At the same time, with Anthos, Google Cloud risks alienating users of GKE by wit
 
 ## Related Links
 
-1. What’s Going on with GKE and Anthos? https://bravenewgeek.com/whats-going-on-with-gke-and-anthos/
-1. Everything You Want To Know About Anthos - Google's Hybrid And Multi-Cloud Platform https://www.forbes.com/sites/janakirammsv/2019/04/14/everything-you-want-to-know-about-anthos-googles-hybrid-and-multi-cloud-platform/
-1. How Google’s Anthos Is Different from AWS and Azure Hybrid Clouds https://www.datacenterknowledge.com/google-alphabet/how-google-s-anthos-different-aws-and-azure-hybrid-clouds
-1. Introducing Anthos: An entirely new platform for managing applications in today's multi-cloud world https://cloud.google.com/blog/topics/hybrid-cloud/new-platform-for-managing-applications-in-todays-multi-cloud-world
-1. Anthos simplifies application modernization with managed service mesh and serverless for your hybrid cloud https://cloud.google.com/blog/topics/hybrid-cloud/anthos-simplifies-application-modernization-with-managed-service-mesh-and-serverless-for-your-hybrid-cloud
+* What’s Going on with GKE and Anthos? https://bravenewgeek.com/whats-going-on-with-gke-and-anthos/
+* Everything You Want To Know About Anthos - Google's Hybrid And Multi-Cloud Platform https://www.forbes.com/sites/janakirammsv/2019/04/14/everything-you-want-to-know-about-anthos-googles-hybrid-and-multi-cloud-platform/
+* How Google’s Anthos Is Different from AWS and Azure Hybrid Clouds https://www.datacenterknowledge.com/google-alphabet/how-google-s-anthos-different-aws-and-azure-hybrid-clouds
+* Introducing Anthos: An entirely new platform for managing applications in today's multi-cloud world https://cloud.google.com/blog/topics/hybrid-cloud/new-platform-for-managing-applications-in-todays-multi-cloud-world
+* Anthos simplifies application modernization with managed service mesh and serverless for your hybrid cloud https://cloud.google.com/blog/topics/hybrid-cloud/anthos-simplifies-application-modernization-with-managed-service-mesh-and-serverless-for-your-hybrid-cloud

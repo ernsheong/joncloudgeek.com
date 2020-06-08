@@ -30,7 +30,7 @@ There is actually a foundation called the **Cloud Native Computing Foundation (C
 
 {{< figure src="./cncf-logo.png" alt="CNCF Logo" caption="Cloud Native Computing Foundation (CNCF)" width="120" >}}
 
-The [CNCF Cloud Native Definition v1.0](https://github.com/cncf/toc/blob/master/DEFINITION.md) says (words in bold are mine for emphasis):
+The [CNCF Cloud Native Definition v*0](https://github.com/cncf/toc/blob/master/DEFINITION.md) says (words in bold are mine for emphasis):
 
 > Cloud native technologies empower organizations to build and run **scalable applications** in modern, dynamic environments such as **public, private, and hybrid clouds**. **Containers, service meshes, microservices, immutable infrastructure, and declarative APIs** exemplify this approach.
 
@@ -40,23 +40,23 @@ The [CNCF Cloud Native Definition v1.0](https://github.com/cncf/toc/blob/master/
 
 I think the "official definition" is helpful to us to clarify what cloud native is and isn't. Let's take a look at what traits are non-negotiable from this definition:
 
-1. **Non-negotiable**: Scalable applications, public/private/hybrid clouds, loosely coupled systems, resilient & manageable & observable, automation, open-source & vendor-neutral
-1. **Negotiable**: Containers, service meshes, microservies, immutable infrastructure, declaractive APIs (although these are "exemplary")
+* **Non-negotiable**: Scalable applications, public/private/hybrid clouds, loosely coupled systems, resilient & manageable & observable, automation, open-source & vendor-neutral
+* **Negotiable**: Containers, service meshes, microservices, immutable infrastructure, declaractive APIs (although these are "exemplary")
 
 {{< figure src="./cncf-platinum.png" alt="CNCF Platinum Members" caption="CNCF Platinum Members (Source: CNCF Website)" width="750" >}}
 
-Many of the points that follow borrow heavily from many of the points made from  Chapter 1 of the book, *Cloud Native Infrastructure*, by Kris Nova and Justin Garrison, which can be found [here](https://www.oreilly.com/library/view/cloud-native-infrastructure/9781491984291/ch01.html).
+Many of the points that follow borrow heavily from many of the points made from  Chapter 1 of the book, *Cloud Native Infrastructure*, by Kris Nova and Justin Garrison, which can be found [here](https://www.oreilly.com/library/view/cloud-native-infrastructure/9781491984291/ch0*html).
 
 
 ## What Cloud Native _Isn't_
 
 It is often instructive, when trying to understand a complex subject, to first start off by exploring what the subject _isn't_.
 
-1. **Cloud native isn't just about running applications in a public cloud**. After all, you could simply "lift and shift" VMs from your own datacenter to EC2 or Compute Engine in the cloud (infrastructure-as-a-service), and virtually nothing was gained from it  .
-1. **Cloud native is not about running applications in containers**. For instance, running applications in containers per se (e.g. via `docker run`) is not really that much of a gain compared to running the application straight in the VM itself.
-1. **Cloud native doesn't mean you only run a container orchestrator**, e.g. Kubernetes. After all, it is possible to use a container orchestrator in a way that is not intended, locking in applications to a specific set of servers. It _is_, however, a big step forward in the right direction.
-1. **Cloud native is not about microservices**. While microservices have benefits such as allowing shorter development cycles on a smaller feature set, monolithic applications can also have the same benefits when done properly, and can also benefit from cloud native infrastructure.
-1. **Cloud native is not about infrastructure as code**. Infrastructure as code, such as Ansible, Chef, and Puppet, automates infrastructure in a particular domain-specific language (DSL). However, using these tools often merely automate one server at a time, and do not actually manage applications better.
+* **Cloud native isn't just about running applications in a public cloud**. After all, you could simply "lift and shift" VMs from your own datacenter to EC2 or Compute Engine in the cloud (infrastructure-as-a-service), and virtually nothing was gained from it  .
+* **Cloud native is not about running applications in containers**. For instance, running applications in containers per se (e.g. via `docker run`) is not really that much of a gain compared to running the application straight in the VM itself.
+* **Cloud native doesn't mean you only run a container orchestrator**, e.g. Kubernetes. After all, it is possible to use a container orchestrator in a way that is not intended, locking in applications to a specific set of servers. It _is_, however, a big step forward in the right direction.
+* **Cloud native is not about microservices**. While microservices have benefits such as allowing shorter development cycles on a smaller feature set, monolithic applications can also have the same benefits when done properly, and can also benefit from cloud native infrastructure.
+* **Cloud native is not about infrastructure as code**. Infrastructure as code, such as Ansible, Chef, and Puppet, automates infrastructure in a particular domain-specific language (DSL). However, using these tools often merely automate one server at a time, and do not actually manage applications better.
 
 ## What Cloud Native _Is_
 
@@ -64,10 +64,10 @@ Since cloud native applications and cloud native infrastructure are separate but
 
 ### What Cloud Native Infrastructure _Is_
 
-1. **Cloud native infrastructure is hidden behind useful abstractions**. There would not really be a "cloud" if all you get is access to bare metal APIs.
-1. **Cloud native infrastructure is controlled by APIs**. As above, the abstractions are to be provided for via an API.
-1. **Cloud native infrastructure is managed by software**. Cloud native infrastructure is not user-managed, it is self-managing by software.
-1. **Cloud native infrastructure is optimized for running applications**. The chief aim of cloud native infrastructure is to run applications for the user.
+* **Cloud native infrastructure is hidden behind useful abstractions**. There would not really be a "cloud" if all you get is access to bare metal APIs.
+* **Cloud native infrastructure is controlled by APIs**. As above, the abstractions are to be provided for via an API.
+* **Cloud native infrastructure is managed by software**. Cloud native infrastructure is not user-managed, it is self-managing by software.
+* **Cloud native infrastructure is optimized for running applications**. The chief aim of cloud native infrastructure is to run applications for the user.
 
 In other words, cloud native infrastructure behaves very much like a platform-as-a-service (PaaS) offering.
 
@@ -75,18 +75,18 @@ While the CNCF would like to advocate for "open-source" and "vendor-neutral" sol
 
 **Kubernetes** is the poster child of cloud native infrastructure which checks all the boxes above while being open-source and vendor neutral. However, we would be very wrong to conclude that Kubernetes is the only way to having a cloud native infrastructure. In fact, I would even dare to say that trying to manage your own Kubernetes is not in line with the principles of cloud native, because in many ways you are managing it *yourself*.
 
-{{< figure src="./kubernetes.svg" alt="Kubernetes logo" caption="Kubernetes" width="180">}}
+{{< figure src="./kubernetes.png" alt="Kubernetes logo" caption="Kubernetes" width="180">}}
 
 ### What Cloud Native Applications _Are_
 
 A cloud native application is designed to run on a cloud native infrastructure platform with the following four key traits:
 
-1. **Cloud native applications are resilient**. *Resiliency* is achieved when failures are treated as the norm rather than something to be avoided. The application takes advantage of the dynamic nature of the platform and should be able to recover from failure.
-1. **Cloud native applications are agile**. *Agility* allows the application to be deployed quickly with short iterations. Often this requires applications to be written as microservices rather than monoliths, but having microservices is not a requirement for cloud native applications.
-1. **Cloud native applications are operable**. *Operability* concerns itself with the qualities of a system that make it work well over its lifetime, not just at deployment phase. An operable application is not only reliable from the end-user point of view, but also from the vantage of the operations team. Examples of operable software is one which operates without needing application restarts or server reboots, or hacks and workarounds that are required to keep the software running. Often this means that the application itself should expose a health check in order for the infrastructure it is running on to query the state of the application.
-1. **Cloud native applications are observable**. *Observability* provides answers to questions about application state. Operators and engineers should not need to make conjectures about what is going on in the application. Application logging and metrics are key to making this happen.
+* **Cloud native applications are resilient**. *Resiliency* is achieved when failures are treated as the norm rather than something to be avoided. The application takes advantage of the dynamic nature of the platform and should be able to recover from failure.
+* **Cloud native applications are agile**. *Agility* allows the application to be deployed quickly with short iterations. Often this requires applications to be written as microservices rather than monoliths, but having microservices is not a requirement for cloud native applications.
+* **Cloud native applications are operable**. *Operability* concerns itself with the qualities of a system that make it work well over its lifetime, not just at deployment phase. An operable application is not only reliable from the end-user point of view, but also from the vantage of the operations team. Examples of operable software is one which operates without needing application restarts or server reboots, or hacks and workarounds that are required to keep the software running. Often this means that the application itself should expose a health check in order for the infrastructure it is running on to query the state of the application.
+* **Cloud native applications are observable**. *Observability* provides answers to questions about application state. Operators and engineers should not need to make conjectures about what is going on in the application. Application logging and metrics are key to making this happen.
 
-The above list suggests that cloud native applications impact the infrastructure that would be necessary to run such applications. Many responsibilities that have been traditionally handled by infrastucture have moved into the  application realm.
+The above list suggests that cloud native applications impact the infrastructure that would be necessary to run such applications. Many responsibilities that have been traditionally handled by infrastructure have moved into the  application realm.
 
 ## Summary
 
@@ -94,5 +94,5 @@ Cloud native is a loaded term which is easily misused by many marketing departme
 
 ## Related Links
 
-1. Cloud Native Infrastructure (Chapter 1) https://www.oreilly.com/library/view/cloud-native-infrastructure/9781491984291/ch01.html
-2. What is Operability? https://blog.softwareoperability.com/what-is-operability/
+* Cloud Native Infrastructure (Chapter 1) https://www.oreilly.com/library/view/cloud-native-infrastructure/9781491984291/ch0*html
+* What is Operability? https://blog.softwareoperability.com/what-is-operability/

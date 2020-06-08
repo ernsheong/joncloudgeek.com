@@ -11,6 +11,11 @@ if [ -z "${POST_PATH}" ]; then
   echo Missing POST_PATH
   exit 1
 fi
+
+if [ -z "${SLUG}" ]; then
+  echo Missing SLUG
+  exit 1
+fi
 echo "Converting from ${POST_PATH}..."
 
 # Wipe and re-create build dir
@@ -32,7 +37,7 @@ if [[ $PLATFORM == "medium" ]]; then
 fi
 
 # Replace relative path with absolute path
-gsed -i "s/(\.\//(https:\/\/joncloudgeek.com\/blog\/deploy-postgres-container-to-compute-engine\//" $TARGET
+gsed -i "s/(\.\//(https:\/\/joncloudgeek.com\/blog\/${SLUG}\//" $TARGET
 
 # Wipe out Frontmatter
 gawk '
@@ -60,11 +65,15 @@ END { print "" } ' $TARGET > "$BUILD_DIR/toc"
 # Prepend Credits to target
 BLOG_PATH=${POST_PATH%index.md}
 BLOG_PATH=${BLOG_PATH#content/}
-gsed -i "1s;^;\nThis post was originally posted on [JonCloudGeek](https://joncloudgeek.com/${BLOG_PATH}).\n\n;" $TARGET
+FREE=""
+if [[ "$PLATFORM" == "medium" ]]; then
+  FREE=" (free)"
+fi
+gsed -i "1s;^;\nThis post was originally posted on [JonCloudGeek](https://joncloudgeek.com/${BLOG_PATH})${FREE}\n\n;" $TARGET
 
 if [[ "$PLATFORM" == "dev" ]]; then
   # Insert TOC file contents before first image
-  gsed -i "/meta\.jpg/e cat ${BUILD_DIR}/toc" $TARGET
+  gsed -i "/\.jpg/e cat ${BUILD_DIR}/toc" $TARGET
 fi
 
 # Promote books at end

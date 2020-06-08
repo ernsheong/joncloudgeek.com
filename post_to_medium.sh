@@ -1,5 +1,11 @@
 #!/bin/bash
 
+set -e
+
+if [[ -z "$TOKEN" ]]; then
+  echo "Missing TOKEN"
+  exit 1
+fi
 if [[ -z "$TITLE" ]]; then
   echo "Missing TITLE"
   exit 1

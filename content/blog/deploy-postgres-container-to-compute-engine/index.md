@@ -75,7 +75,7 @@ This blog post is for smaller projects that need Postgres but without Cloud SQL,
 
         {{< figure src="./copy-image-url.png" alt="Copy the image url" caption="Copy the image url" width="650" >}}
 
-5. Paste the image URL into previous Compute Engine step. Set the minimum necessary environment variables. The default user is **postgres**. POSTGRES_DB is arguably unnecessary, you can already create it manually after instance creation.
+5. Paste the image URL into previous Compute Engine step. Set the minimum necessary environment variables. The default user is **postgres**. POSTGRES_DB is arguably unnecessary, you can also create it manually after instance creation.
 
     {{< figure src="./set-image-env-var.png" alt="Set the image and environment variables" caption="Set the image and environment variables" width="450" >}}
 
