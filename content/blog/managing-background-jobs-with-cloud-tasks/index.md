@@ -28,23 +28,23 @@ Well, that's a paraphrase of the [documentation intro](https://cloud.google.com/
 
 A **task** is the **encapsulation of information representing an independent piece of work** that triggers a request to a **handler** to complete the task (handler is the code that runs on a certain endpoint **target**). The task remains in the **queue** which persists the task until the triggered handler completes with a successful status code. If the handler suffers from a failure or an error, the queue will retry the task again later (with backoff). It will also rate-limit the number of concurrent tasks that is simultaneously executed, hence saving your worker endpoint from certain "drowning" otherwise.
 
-As a simple example, sending an email based on a user action should ideally be done asynchrously as a task, allowing you to return from the request more quickly, and ensuring that the email is actually sent in the event of a failure in the sender gateway.
+As a simple example, sending an email based on a user action should ideally be done asynchronously as a task, allowing you to return from the request more quickly, and ensuring that the email is actually sent in the event of a failure in the sender gateway.
 
 You will first create and configure the queue, which is then managed by Cloud Tasks. Complexities associated with task management such as latency, server crashes, resource consumption limitations, and retry management is handled by Cloud Tasks.
 
 Each task is made up of:
 
 * **A unique name** (generated for you by client SDKs, usually)
-* **Configuration information** (e.g. timeout)
+* **Configuration information** (e.g. url, timeout, HTTP method)
 * (optional) **Payload** of data necessary to process the request. The payload is send in the request body, thus handlers that process tasks with payloads must use POST or PUT as the HTTML method.
 
 ## Relationship with App Engine
 
 Historically, Cloud Tasks had its origins in App Engine. Indeed, if you use the first generation App Engine standard environment, you should use Cloud Tasks via the App Engine Task Queue API (if you are new to App Engine standard you should use the second generation instead). All other users (second generation App Engine standard, App Engine flex, Compute Engine, Cloud Run, etc.) should use the Cloud Tasks API, which we are interested in.
 
-At time of writing, Cloud Tasks requires you to have a project with App Engine configured. **The App Engine app hosts the Cloud Task queues that are created** (note that this "app" is not something deployable, it is under the hood and you cannot remove it, but you can disable App Engine in your project). Particularly, the App Engine app is **located in a specific region which serves the location of your queues in Cloud Tasks**. Hence, you should give some thought to where your App Engine app is going to be, because once it is set for your project you cannot change it without creating another project. This limitation kinda sucks because it would be nice to just be able to spin up queues wherever I like, like how I can spin up a function in Cloud Functions in any supported region.
+At time of writing, Cloud Tasks requires you to have a project with App Engine configured. **The App Engine app hosts the Cloud Task queues that are created** (note that this "App Engine app" is really internal Google infrastructure that is somewhat coupled with App Engine, but you can disable App Engine in your project). Particularly, the App Engine app is **located in a specific region which serves the location of your queues in Cloud Tasks**. Hence, you should give some thought to where your App Engine app is going to be, because once it is set for your project you cannot change it without creating another project. This limitation kinda sucks because it would be nice to just be able to spin up queues wherever I like, like how I can spin up a function in Cloud Functions in any supported region.
 
-Note that, because of this, disabling App Engine in your project will cause Cloud Tasks to stop working, whether or not you use App Engine handlers or HTTP handlers (next section).
+Note that, because of this, disabling App Engine in your project will cause Cloud Tasks to stop working, whether or not you use App Engine handlers or HTTP handlers (see next section).
 
 ## Targets
 
@@ -243,6 +243,6 @@ See [Cloud Tasks versus Cloud Scheduler](https://cloud.google.com/tasks/docs/com
 
 ## Summary
 
-Cloud Tasks is GCP's fully managed solution for handling queues of background jobs (tasks). It provides rate-limiting and retry capabilities that are not present in Pub/Sub. Before reaching out for Pub/Sub you may want to consider if Cloud Tasks suits your application use case better.
+Cloud Tasks is GCP's fully managed solution for handling queues of background jobs (tasks). It provides rate-limiting and retry capabilities that are not present in Pub/Sub. Before reaching out for Pub/Sub you may want to consider if Cloud Tasks suits your application's use case better.
 
 Cloud Tasks also provides a great alternative to third-party queues such as Resque or Sidekiq, if not better. Unlike these third-party queues, there are no workers or queues to manage; it is serverless apart from the task handlers which you will have to provide.
