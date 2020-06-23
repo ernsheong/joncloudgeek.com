@@ -79,7 +79,7 @@ fi
 # Promote books at end
 gawk '
   { print }
-  END { print "\n## My GCP Books\n\nIf you found this blog post helpful, kindly check out my [books on GCP topics](https://joncloudgeek.com/books/)!" }
+  END { print "\n## My GCP Books and Courses\n\nIf you found this blog post helpful, kindly check out my [books and courses on GCP](https://joncloudgeek.com/store/)!" }
 ' $TARGET > $TARGET_TEMP
 mv $TARGET_TEMP $TARGET
 
