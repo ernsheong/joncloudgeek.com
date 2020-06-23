@@ -1,0 +1,23 @@
+[debug] [2020-06-23T05:28:36.481Z] ----------------------------------------------------------------------
+[debug] [2020-06-23T05:28:36.483Z] Command:       /Users/ernsheong/.nvm/versions/node/v10.15.3/bin/node /Users/ernsheong/.nvm/versions/node/v10.15.3/bin/firebase deploy
+[debug] [2020-06-23T05:28:36.484Z] CLI Version:   8.3.0
+[debug] [2020-06-23T05:28:36.484Z] Platform:      darwin
+[debug] [2020-06-23T05:28:36.484Z] Node Version:  v10.15.3
+[debug] [2020-06-23T05:28:36.485Z] Time:          Tue Jun 23 2020 13:28:36 GMT+0800 (Malaysia Time)
+[debug] [2020-06-23T05:28:36.485Z] ----------------------------------------------------------------------
+[debug] [2020-06-23T05:28:36.485Z] 
+[debug] [2020-06-23T05:28:36.497Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-06-23T05:28:36.497Z] > authorizing via signed-in user
+[debug] [2020-06-23T05:28:36.498Z] [iam] checking project joncloudgeek for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-06-23T05:28:36.502Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/joncloudgeek:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2020-06-23T05:28:37.687Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 23 Jun 2020 05:28:37 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1093","alt-svc":"h3-28=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-25=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-06-23T05:28:37.689Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/joncloudgeek  
+ 
+[debug] [2020-06-23T05:28:38.219Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 23 Jun 2020 05:28:38 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-28=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-25=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'joncloudgeek'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2020-06-23T05:28:38.223Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/joncloudgeek-5ffb6/versions  
+ {"config":{},"labels":{"deployment-tool":"cli-firebase"}}
