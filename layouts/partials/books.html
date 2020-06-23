@@ -1,11 +1,17 @@
-<div class="mt-2">
-<p><b>Check out some of my GCP books!</b></p>
+{{ if ne (.Permalink | relURL) "/store/" }}
+  <div class="mt-2">
+    <p><b>Check out some of my books and courses!</b></p>
 
-<a href="https://gumroad.com/l/gcp-pca-study-guide-book" target="_blank" class="inline-block mr-1 mb-2">
-  <img src="/img/book-pca-study-guide.png" width="150">
-</a>
+    <a href="https://gumroad.com/l/gcp-pca-study-guide-book" target="_blank" class="inline-block mr-1 mb-2">
+      <img src="/img/book-pca-study-guide.png" style="height:150px;">
+    </a>
 
-<a href="https://gumroad.com/l/deploy-nodejs-gcp-book" target="_blank" class="inline-block mr-1 mb-2">
-  <img src="/img/book-deploy-nodejs-gcp.png" width="150">
-</a>
-</div>
+    <a href="https://gumroad.com/l/deploy-nodejs-gcp-book" target="_blank" class="inline-block mr-1 mb-2">
+      <img src="/img/book-deploy-nodejs-gcp.png" style="height:150px;">
+    </a>
+
+    <a href="https://gumroad.com/l/deploy-nodejs-gcp-course" target="_blank" class="inline-block mr-1 mb-2">
+      <img src="/img/course-deploy-nodejs-gcp.png" style="height:150px;width:150px;object-fit:cover;">
+    </a>
+  </div>
+{{ end }}
