@@ -8,15 +8,15 @@ menu: ["main", "footer"]
 
 View all my products on sale at **https://store.joncloudgeek.com**
 
-## Deploy Node.js on GCP
+<h2 class="font-bold text-2xl mt-8 inline-block">Deploy Node.js on GCP</h2>
 
 <span class="font-bold text-xl">A Comprehensive Guide to Deploying Node.js on Google Cloud Platform</span>
 
-<div class="flex flex-col lg:flex-row">
-  <a href="https://gumroad.com/l/deploy-nodejs-gcp-book" target="_blank" style="display:inline-block;margin-bottom:3rem;">
+<div class="flex flex-col md:flex-row">
+  <a href="https://gumroad.com/l/deploy-nodejs-gcp-book" target="_blank" class="mb-4">
     <img src="/img/book-deploy-nodejs-gcp.png" width="300">
   </a>
-  <div class="flex-1 mx-4 lg:mx-0 lg:ml-4 text-lg">
+  <div class="flex-1 mx-0 md:mx-4 text-lg">
     <p>Journey with me as I guide you through how to deploy a Node.js application (a sample Bookshelf Express app) on GCP to App Engine, Cloud Functions (yes, Express on Cloud Functions!), Cloud Run, Compute Engine, and Kubernetes Engine.</p>
     <p class="font-bold">Get it:</p>
     <ul>
@@ -27,15 +27,15 @@ View all my products on sale at **https://store.joncloudgeek.com**
   </div>
 </div>
 
-## GCP Professional Cloud Architect Study Guide
+<h2 class="font-bold text-2xl mt-8 inline-block">GCP Professional Cloud Architect Study Guide</h2>
 
 <span class="font-bold text-xl">The Missing Lecture Notes for Passing the Professional Cloud Architect Exam</span>
 
-<div class="flex flex-col lg:flex-row">
-  <a href="https://gumroad.com/l/gcp-pca-study-guide-book" target="_blank" style="display:inline-block;margin-bottom:3rem;">
+<div class="flex flex-col md:flex-row">
+  <a href="https://gumroad.com/l/gcp-pca-study-guide-book" target="_blank" class="mb-4">
     <img src="/img/book-pca-study-guide.png" width="300">
   </a>
-  <div class="flex-1 mx-4 lg:mx-0 lg:ml-4 text-lg">
+  <div class="flex-1 mx-0 md:mx-4 text-lg">
     <p>Most courses and books on the certification overload you with stuff that will never appear in the exam (good for your knowledge and understanding though). This book ruthlessly focuses on exactly what you need to know to pass this exam. No long-windedness, reams of documentation, or deployment walkthroughs.</p>
     <p class="font-bold">Get it:</p>
     <ul>
