@@ -18,10 +18,10 @@ if [[ -z "$CANONICAL_URL" ]]; then
   echo "Missing CANONICAL_URL"
   exit 1
 fi
-if [[ -z "$TAGS" ]]; then
-  echo "Missing TAGS"
-  exit 1
-fi
+# if [[ -z "$TAGS" ]]; then
+#   echo "Missing TAGS"
+#   exit 1
+# fi
 
 HTML_CONTENT=$(cat export/medium.html)
 
@@ -32,10 +32,10 @@ JSON_DATA=$( jq -n \
   --arg title "$TITLE" \
   --arg content "$HTML_CONTENT" \
   --arg canonicalUrl "$CANONICAL_URL" \
-  --argjson tags "$TAGS" \
   --arg publishStatus "draft" \
   --arg contentFormat "html" \
-  '{title:$title,content:$content,canonicalUrl:$canonicalUrl,publishStatus:$publishStatus,contentFormat:$contentFormat,tags:$tags}'
+  '{title:$title,content:$content,canonicalUrl:$canonicalUrl,publishStatus:$publishStatus,contentFormat:$contentFormat}'
+  # --argjson tags "$TAGS" \
 )
 
 curl -sS -d "$JSON_DATA" \
