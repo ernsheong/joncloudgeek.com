@@ -36,7 +36,7 @@ Each task is made up of:
 
 * **A unique name** (generated for you by client SDKs, usually)
 * **Configuration information** (e.g. url, timeout, HTTP method)
-* (optional) **Payload** of data necessary to process the request. The payload is send in the request body, thus handlers that process tasks with payloads must use POST or PUT as the HTTML method.
+* (optional) **Payload** of data necessary to process the request. The payload is send in the request body, thus handlers that process tasks with payloads must use POST or PUT as the HTTP method.
 
 ## Relationship with App Engine
 
