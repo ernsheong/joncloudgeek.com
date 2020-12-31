@@ -16,3 +16,4 @@ Find me on [LinkedIn](https://www.linkedin.com/in/jonlinernsheong/) to connect w
 
 You can find my personal blog [here](https://jonlin.es). Check out my [books on cloud topics](/books/)! I am also available for consulting via [Belian Tech](https://beliantech.com/google-cloud/).
 
+You can reach me at the concatenation of jon, at, and joncloudgeek dot com.

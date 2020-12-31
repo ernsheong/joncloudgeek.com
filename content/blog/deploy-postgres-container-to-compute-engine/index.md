@@ -159,6 +159,6 @@ Also highly recommended is that you take [**scheduled snapshots**](https://cloud
 
 The information provided in this blog post is provided as is, without warranty of any kind, express or implied. By following the steps outlined in this blog post I do not guarantee that your database will be free from any sort of failures or data losses.
 
-## Further reads
+## Further reading
 
 You should also read my response to this article, [Why Cloud SQL Makes Sense](http://localhost:1313/blog/why-cloud-sql-makes-sense/).
