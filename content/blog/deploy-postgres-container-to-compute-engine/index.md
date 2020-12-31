@@ -161,4 +161,4 @@ The information provided in this blog post is provided as is, without warranty o
 
 ## Further reading
 
-You should also read my response to this article, [Why Cloud SQL Makes Sense](http://localhost:1313/blog/why-cloud-sql-makes-sense/).
+You should also read my response to this article, [Why Cloud SQL Makes Sense](/blog/why-cloud-sql-makes-sense/).
