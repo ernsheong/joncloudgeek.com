@@ -4,7 +4,7 @@ description: "I talk about the nitty-gritty of using Jenkins to deploy to GKE in
 date: 2021-02-17T08:00:00+08:00
 images:
 - blog/talk-deploying-from-jenkins-to-gke-google-cloud/meta.png
-summary: In this talk, I talk about the nitty-gritty of using Jenkins to deploy to Google Cloud. I also explore using Workload Identity to associate a Kubernetes service account with a Google Cloud service account.
+summary: In this talk, I talk about the nitty-gritty of using Jenkins to deploy to GKE in Google Cloud. I cover how to use GKE as the dynamic job runner for your Jenkins jobs. I also explore using Workload Identity to associate a Kubernetes service account with a Google Cloud service account.
 draft: false
 tags:
   - jenkins
@@ -14,7 +14,7 @@ toc: false
 ---
 ## Introduction
 
-In this talk, I talk about the nitty-gritty of using Jenkins to deploy to GKE in Google Cloud. I also explore using Workload Identity to associate a Kubernetes service account with a Google Cloud service account.
+In this talk, I talk about the nitty-gritty of using Jenkins to deploy to GKE in Google Cloud. I cover how to use GKE as the dynamic job runner for your Jenkins jobs. I also explore using Workload Identity to associate a Kubernetes service account with a Google Cloud service account.
 
 ## Slides
 
