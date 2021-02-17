@@ -1,6 +1,6 @@
 ---
 title: "Talk: Deploying from Jenkins to GKE in Google Cloud"
-description: "I talk about the nitty-gritty of using Jenkins to deploy to Google Cloud"
+description: "I talk about the nitty-gritty of using Jenkins to deploy to GKE in Google Cloud"
 date: 2021-02-17T08:00:00+08:00
 images:
 - blog/talk-deploying-from-jenkins-to-gke-google-cloud/meta.png
