@@ -28,5 +28,8 @@ In this talk, I talk about the nitty-gritty of using Jenkins to deploy to GKE in
 
 - [Demo code on GitHub](https://github.com/ernsheong/jenkins-gke-demo)
 - [Installing Jenkins](https://www.jenkins.io/doc/book/installing/)
+- [Kubernetes plugin for Jenkins](https://plugins.jenkins.io/kubernetes/)
+- [Setting up Jenkins on GKE](https://cloud.google.com/solutions/jenkins-on-kubernetes-engine-tutorial)
+- [Continuous deployment to Google Kubernetes Engine using Jenkins](https://cloud.google.com/solutions/continuous-delivery-jenkins-kubernetes-engine)
 - [Google Cloud: Get authentication credentials for the cluster](https://cloud.google.com/kubernetes-engine/docs/quickstart#get_authentication_credentials_for_the_cluster)
 - [Google Cloud: Using Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity)
