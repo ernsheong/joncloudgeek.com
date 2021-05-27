@@ -23,7 +23,7 @@ Cool? OK, read on.
 
 ## Does this need to be solved?
 
-First of all, it should be considered whether this problem needs to be fixed. It is much simpler to put the AstraZenaca opt-in in the MySejahtera app, and not allow people to choose their dates. This to me is the most sensible option without going through the rabbit hole of the vaccine booking website. The MySejahtera analytics team can then process the data in their own sweet time, and even prioritize older folks from there. And people are generally OK with any date (because it's a long-awaited vaccine), and most are able to take leave for this.
+First of all, it should be considered whether this problem needs to be solved. It is much simpler to put the AstraZenaca opt-in in the MySejahtera app, and not allow people to choose their dates. This to me is the most sensible option without going through the rabbit hole of the vaccine booking website. The MySejahtera analytics team can then process the data in their own sweet time, and even prioritize older folks from there. And people are generally OK with any date (because it's a long-awaited vaccine), and most are able to take leave for this.
 
 ## Problems with the site
 
@@ -81,7 +81,7 @@ Importantly, in my design this worker does one more thing: Update a counter row 
 
 Arguably this is the most critical part of the system, which will close the loop in our design.
 
-Another separate single worker (Worker B) that simply reads from this table every 5-10 seconds and updates the Redis cache for each State for serving by the API. BOOM, we are done.
+A separate single worker (Worker B) simply reads from the counter tables every 5-10 seconds and updates the Redis cache for each State. We are thus done.
 
 {{< figure src="./3_update_list_2.png" caption="Workers process messages from counter-topic, and increments a counter in the database. Another worker periodically reads from these counter rows and updates the Redis cache with available latest booking times." >}}
 
