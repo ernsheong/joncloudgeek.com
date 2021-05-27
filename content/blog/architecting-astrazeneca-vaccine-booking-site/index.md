@@ -83,7 +83,7 @@ Arguably this is the most critical part of the system, which will close the loop
 
 A separate single worker (Worker B) simply reads from the counter tables every 5-10 seconds and updates the Redis cache for each State. We are thus done.
 
-{{< figure src="./3_update_list_2.png" caption="Workers process messages from counter-topic, and increments a counter in the database. Another worker periodically reads from these counter rows and updates the Redis cache with available latest booking times." >}}
+{{< figure src="./3_update_list_2.png" caption="Worker B reads from the counter rows in the database and updates the Redis cache with available latest booking times (while disabling overbooked slots)." >}}
 
 An assumption that I make here is that vaccine bookings, unlike cinema bookings, can handle a fair amount of overbooking. Hence my system assumes that some days can be slightly overbooked, and this is inevitable (in a highly scalable system) because there is a delay between when the user sees the form, and when the State list gets updated. I don't really wish to go down the rabbit hole of websockets, which is another scalability headache and point of failure, and more complexity in the UI as well. One option is for the UI to repeatedly call the GET endpoint and update the UI, but do you really want to overload (self-sabotage) the endpoint like that, and also cause UX issues for the user?
 
@@ -100,6 +100,10 @@ Pub/Sub is a publish _at least once_ system, namely your system may end up proce
 ## Will this work?
 
 In theory, yes. But in any system design, the ultimate test will be prototyping and deploying it in the real world. For something as high stakes as vaccine booking, a stress test with simulated dummy data and high qps would be crucial to test out the scalability of the system. However, there is always some element in stress testing that is not the same as a real production use case, we can only do our very best to cover all cases. Hence in the above we have designed it in such a way that we do not rely on anything that can cause bottlenecks, e.g. ensuring the API does not touch the database at all. By such a design we have a lot more confidence of its scalability.
+
+Is this the "best" design? No. But it tries to maintain system simplicity. The huge failing point will be huge overbookings at the start of the timeframe. Elrex Yeoh on Facebook suggested that people be put on waiting rooms/queues where they await their turn to make their booking (as in conventional booking systems). This is probably more robust (but more complexity), and is left as an exercise to the reader.
+
+Again, the best solution is no solution. Just solve the problem via some other simple way like MySejahtera opt-in.
 
 ## Summary
 
