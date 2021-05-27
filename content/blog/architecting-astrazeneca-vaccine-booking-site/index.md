@@ -13,6 +13,8 @@ tags:
   - pubsub
 ---
 
+{{< figure src="./meta.jpg" alt="An architected building." caption="A highly-scalable vaccine booking website in the cloud." >}}
+
 In this blog post, I try to explore what it takes to build a highly scalable [vaccine booking site](https://www.vaksincovid.gov.my/) using "boring" technologies and good old architecture patterns on Google Cloud. Notably, I will not be using DynamoDB or Bigtable or NoSQL databases of that sort. I think SQL can work here.
 
 ## Disclaimer
@@ -24,6 +26,8 @@ Cool? OK, read on.
 ## Does this need to be solved?
 
 First of all, it should be considered whether this problem needs to be solved. It is much simpler to put the AstraZenaca opt-in in the MySejahtera app, and not allow people to choose their dates. This to me is the most sensible option without going through the rabbit hole of a vaccine booking website. The MySejahtera analytics team can then process the data in their own sweet time, and even prioritize older folks from there. And people are generally OK with any date (because it's a long-awaited vaccine), and most are able to take leave for this.
+
+But sometimes your boss says, "Just do what I say". If so, read on.
 
 ## Problems with the site
 
