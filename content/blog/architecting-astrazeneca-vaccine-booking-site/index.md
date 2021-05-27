@@ -29,9 +29,9 @@ First of all, it should be considered whether this problem needs to be fixed. It
 
 So, the AstraZeneca debacle yesterday was highly distressing and ruined the public holiday for most of us. It is hard to believe that they actually managed to secure 500k bookings (1 mil doses available) when the endpoints were giving errors most of the time. Registration is closed (all spots purpotedly taken), but it feels to me like it is just closed for maintenance while they fix the site or simply disburse the AZ vaccines separately.
 
-The main issue with the site boils down to the endpoint for retrieving vaccine centers and appointment times:
+The main issue with the site boils down to the endpoint for retrieving vaccine centers and booking times:
 
-{{< figure src="./list_ppv_error.png" alt="Error listing vaccine centers and appointment times" caption="Error when retrieving the list of vaccine centers and appointment times. You can repeatedly call this endpoint by hitting the State button." >}}
+{{< figure src="./list_ppv_error.png" alt="Error listing vaccine centers and booking times" caption="Error when retrieving the list of vaccine centers and booking times. You can repeatedly call this endpoint by hitting the State button." >}}
 
 You were given a form option for which State to choose from, and once you hit that button, it tries to call an endpoint with `action=listppv` that does not include the state choice you selected.
 
@@ -75,7 +75,7 @@ In my design, all this endpoint will do it simply publish the incoming appointme
 
 On the other end of this Pub/Sub topic are worker container instances running in Cloud Run (also horizontally scalable), processing the incoming booking information, and updating the SQL database (Postgres in my case) with the booking information. That's it. It can optionally also send an email confirmation to the user (e.g. an API call to SendGrid).
 
-Importantly, in my design this worker does one more thing: emit a message to another Pub/Sub topic, `counter-topic` with the date and location of the booking. This message will be used by another worker to update the Redis cache with latest appointment times information for the booking times endpoint. That is what we explore next.
+Importantly, in my design this worker does one more thing: emit a message to another Pub/Sub topic, `counter-topic` with the date and location of the booking. This message will be used by another worker to update the Redis cache with latest booking times information for the booking times endpoint. That is what we explore next.
 
 ### C. Updating booking times in the cache
 
