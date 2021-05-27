@@ -73,17 +73,15 @@ In my design, all this endpoint will do it simply publish the incoming appointme
 
 {{< figure src="./2_submit.png" caption="POST /submit takes a payload of the booking information, puts it into Pub/Sub, and returns. The payload is processed asynchronously by workers separately." >}}
 
-On the other end of this Pub/Sub topic are worker container instances running in Cloud Run (also horizontally scalable), processing the incoming booking information, and updating the SQL database (Postgres in my case) with the booking information. That's it. It can optionally also send an email confirmation to the user (e.g. an API call to SendGrid).
+On the other end of this Pub/Sub topic are worker container instances running in Cloud Run (also horizontally scalable), processing the incoming booking information, and storing the booking information the SQL database (Postgres in my case). That's it. It can optionally also send an email confirmation to the user (e.g. an API call to SendGrid).
 
-Importantly, in my design this worker does one more thing: emit a message to another Pub/Sub topic, `counter-topic` with the date and location of the booking. This message will be used by another worker to update the Redis cache with latest booking times information for the booking times endpoint. That is what we explore next.
+Importantly, in my design this worker does one more thing: Update a counter row in the database with a query like `UPDATE mytable SET mycolumn = mycolumn + 1;` that is immune to concurrency issues. This message will be used by another worker to update the Redis cache with latest booking times information for the booking times endpoint. That is what we explore next.
 
 ### C. Updating booking times in the cache
 
 Arguably this is the most critical part of the system, which will close the loop in our design.
 
-I try to go for a simple one, i.e. process the incoming messages from `counter-topic` using worker instances, and simply updating a counter row in the database with a query like `UPDATE mytable SET mycolumn = mycolumn + 1;` that is immune to concurrency issues.
-
-I would then also setup another separate single worker (Worker B) that simply reads from this table every 5-10 seconds and updates the Redis cache for each State for serving by the API. BOOM, we are done.
+Another separate single worker (Worker B) that simply reads from this table every 5-10 seconds and updates the Redis cache for each State for serving by the API. BOOM, we are done.
 
 {{< figure src="./3_update_list.png" caption="Workers process messages from counter-topic, and increments a counter in the database. Another worker periodically reads from these counter rows and updates the Redis cache with available latest booking times." >}}
 
