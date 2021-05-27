@@ -111,9 +111,17 @@ Is this the "best" design? No. But it tries to maintain system simplicity. The h
 
 Again, the best solution is no solution. Just solve the problem via some other simple way like MySejahtera opt-in.
 
+## An Alternative Solution
+
+Apart from the aforementioned MySejahtera opt-in solution, I thought of a much simpler solution that doesn't deal with APIs, and is much simpler than my 3-step solution above.
+
+Just serve the user with an "application" form (note: not a guaranteed booking) with all the dates and locations baked in (all slots open, no greyed out slots). Ask the user to select the location, then select 3 date preferences, one from each available week. Fine, if someone selects 3 consecutive Saturdays, then in that case we say "we will allocate for you if not available", or provide a separate workflow for date reselection (better if date reselection can be done in MySejahtera for vaccine types). User submits the form, DONE. No `listppv` API, no Redis, no Pub/Sub (albeit the Pub/Sub intermediate layer would be recommended). Never mind if 2 million people submit and many receive rejections later. It would still be much more favorable than yesterday.
+
+When a solution seems too complex (and we're all lazy people), one should step back and re-examine the whole problem and try to think of the simplest possible solution. This date preferences solution would be an alternative viable solution that CANNOT fail.
+
 ## Summary
 
-I hope I have demonstrated that system design is more of an art than a science. Ask 1000 software engineers and solutions architects, and you will get back 1000 different designs (different data flows, different databases, different clouds, different programming langauges, different UI, etc.). But most of these designs will share some general principles of best practices, and that is what you are looking for. There is no such thing as a perfect system, only "good enough".
+I hope I have demonstrated that system design is more of an art than a science. Ask 1000 software engineers and solutions architects, and you will get back 1000 different designs (different data flows, different databases, different clouds, different programming languages, different UI, etc.). But most of these designs will share some general principles of best practices, and that is what you are looking for. There is no such thing as a perfect system, only "good enough".
 
 ## Resources
 
