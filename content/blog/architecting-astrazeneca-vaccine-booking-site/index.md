@@ -108,6 +108,6 @@ I hope I have demonstrated that system design is more of an art than a science. 
 ## Resources
 
 - [Architecture design by Aizu Ikmal Ahmad](https://www.facebook.com/100051196322304/posts/320327833017092/?d=n)
-- [Architecture design by Timothy Teoh](https://www.linkedin.com/feed/update/urn:li:activity:6803217386486030336/)
+- [Architecture design by Timothy Teoh](https://timothyteoh.medium.com/how-i-would-have-designed-the-jkjavmy-astrazeneca-appointment-database-a5502535a738)
 - [Cloud Run](https://cloud.google.com/run)
 - [Google Cloud](https://cloud.google.com/)
