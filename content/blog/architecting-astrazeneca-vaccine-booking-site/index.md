@@ -71,7 +71,7 @@ If all goes well, the booking submission endpoint is also going to be hammered. 
 
 In my design, all this endpoint will do it simply publish the incoming appointment information into a Pub/Sub topic `appointments-topic`, and be done with it.
 
-{{< figure src="./2_submit.png" caption="POST /submit takes a payload of the booking information, puts it into Pub/Sub, and returns. The payload is processed asynchronously by workers separately." >}}
+{{< figure src="./2_submit_2.png" caption="POST /submit takes a payload of the booking information, puts it into Pub/Sub, and returns. The payload is processed asynchronously by workers separately." >}}
 
 On the other end of this Pub/Sub topic are worker container instances running in Cloud Run (also horizontally scalable), processing the incoming booking information, and storing the booking information the SQL database (Postgres in my case). That's it. It can optionally also send an email confirmation to the user (e.g. an API call to SendGrid).
 
@@ -83,7 +83,7 @@ Arguably this is the most critical part of the system, which will close the loop
 
 Another separate single worker (Worker B) that simply reads from this table every 5-10 seconds and updates the Redis cache for each State for serving by the API. BOOM, we are done.
 
-{{< figure src="./3_update_list.png" caption="Workers process messages from counter-topic, and increments a counter in the database. Another worker periodically reads from these counter rows and updates the Redis cache with available latest booking times." >}}
+{{< figure src="./3_update_list_2.png" caption="Workers process messages from counter-topic, and increments a counter in the database. Another worker periodically reads from these counter rows and updates the Redis cache with available latest booking times." >}}
 
 An assumption that I make here is that vaccine bookings, unlike cinema bookings, can handle a fair amount of overbooking. Hence my system assumes that some days can be slightly overbooked, and this is inevitable (in a highly scalable system) because there is a delay between when the user sees the form, and when the State list gets updated. I don't really wish to go down the rabbit hole of websockets, which is another scalability headache and point of failure, and more complexity in the UI as well. One option is for the UI to repeatedly call the GET endpoint and update the UI, but do you really want to overload (self-sabotage) the endpoint like that, and also cause UX issues for the user?
 
