@@ -15,6 +15,8 @@ tags:
 
 {{< figure src="./meta.jpg" alt="An architected building." caption="A highly-scalable vaccine booking website in the cloud." >}}
 
+## Introduction
+
 In this blog post, I try to explore what it takes to build a highly scalable [vaccine booking site](https://www.vaksincovid.gov.my/) using "boring" technologies and good old architecture patterns on Google Cloud. Notably, I will not be using DynamoDB or Bigtable or NoSQL databases of that sort. I think SQL can work here.
 
 ## Disclaimer
@@ -91,15 +93,15 @@ Every 5-10 seconds, a separate single worker (Worker B) simply reads from the co
 
 {{< figure src="./3_update_list_2.png" caption="Worker B reads from the counter rows in the database and updates the Redis cache with available latest booking times (while disabling overbooked slots)." >}}
 
-An assumption that I make here is that vaccine bookings, unlike cinema bookings, can handle a fair amount of overbooking. Hence my system assumes that some days can be slightly overbooked, and this is inevitable (in a highly scalable system) because there is a delay between when the user sees the form, and when the State list gets updated. I don't really wish to go down the rabbit hole of websockets, which is another scalability headache and point of failure, and more complexity in the UI as well. One option is for the UI to repeatedly call the GET endpoint and update the UI, but do you really want to overload (self-sabotage) the endpoint like that, and also cause UX issues for the user?
+An assumption that I make here is that vaccine bookings, unlike cinema bookings, can handle a fair amount of overbooking. Hence my system assumes that some days can be slightly overbooked, and this is inevitable (in a highly scalable system) because there is a delay between when the user sees the form, and when the State list gets updated. I don't really wish to go down the rabbit hole of websockets, which is another scalability headache and point of failure, and more complexity in the UI as well.
 
 I have also omitted the database design here, but it is left as an exercise to the reader and from my experience won't be a deal-breaker in our design. Obviously, correct database sizing is also crucial here.
 
-### Frontend Architecture
+## Frontend Architecture
 
 I would just deploy vaksincovid.com.my to Firebase Hosting as a static site. Firebase Hosting handles CDN for me, and is virtually infinitely scalable without any additional work on my part (just like this blog).
 
-### Pub/Sub Caveat
+## Pub/Sub Caveat
 
 Pub/Sub is a publish _at least once_ system, namely your system may end up processing the same message _twice_ or more times. In practice, this is a rare occurence. You can choose to handle this by keeping track of the message IDs received in Redis, and do not process if you have seen it before.
 
@@ -115,11 +117,13 @@ Again, the best solution is no solution. Just solve the problem via some other s
 
 Apart from the aforementioned MySejahtera opt-in solution, I thought of a much simpler solution that doesn't deal with APIs, and is much simpler than my 3-step solution above.
 
-Just serve the user with an "application" form (note: not a guaranteed booking) with all the dates and locations baked in (all slots open, no greyed out slots). Ask the user to select the location, then select 3 date preferences, one from each available week. Fine, if someone selects 3 consecutive Saturdays, then in that case we say "we will allocate for you if not available", or provide a separate workflow for date reselection (better if date reselection can be done in MySejahtera for vaccine types). User submits the form, DONE. No `listppv` API, no Redis, no Pub/Sub (albeit the Pub/Sub intermediate layer would be recommended). Never mind if 2 million people submit and many receive rejections later. It would still be much more favorable than yesterday.
+Just serve the user with an application form (note: not a guaranteed booking) with all the dates and locations baked in (all slots open, no greyed out slots). Ask the user to select the location, then select 3 date preferences, one from each available week. Fine, if someone selects 3 consecutive Saturdays, then in that case we say "we will allocate for you if not available", or provide a separate workflow for date reselection (better if date reselection can be done in MySejahtera). User submits the form, DONE. No `listppv` API, no Redis, no Pub/Sub (albeit the Pub/Sub intermediate layer would be recommended). Never mind if 2 million people submit and many receive rejections later. It would still be much more favorable than yesterday.
 
 When a solution seems too complex (and we're all lazy people), one should step back and re-examine the whole problem and try to think of the simplest possible solution. This date preferences solution would be an alternative viable solution that CANNOT fail.
 
 ## Summary
+
+In retrospect, at the beginning the AZ vaccine was not certain to be a hit. A non-scalable vaccine booking website was fine. But after the first round it was clear that _the requirements have inadvertently changed_. No one thought that a vaccine with higher blood clotting risk would have been a hit. Malaysians got too fed up with the pandemic and will just take whatever is on offer, especially one where you can easily fill up a form and get. I think this is the main reason why we ended up with this debacle. Requirements changing or not understood properly is a common cause of IT project failures.
 
 I hope I have demonstrated that system design is more of an art than a science. Ask 1000 software engineers and solutions architects, and you will get back 1000 different designs (different data flows, different databases, different clouds, different programming languages, different UI, etc.). But most of these designs will share some general principles of best practices, and that is what you are looking for. There is no such thing as a perfect system, only "good enough".
 
