@@ -13,6 +13,9 @@ tags:
   - "Talks"
 toc: false
 ---
+
+*This talk was presented on Feb 17, 2021 via DevOps Malaysia. Some methods in the talk may have become obsolete or replaced with better best practices*.
+
 ## Introduction
 
 In this talk, I talk about the nitty-gritty of using Jenkins to deploy to GKE in Google Cloud. I cover how to use GKE as the dynamic job runner for your Jenkins jobs. I also explore using Workload Identity to associate a Kubernetes service account with a Google Cloud service account.

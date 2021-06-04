@@ -1,7 +1,7 @@
 ---
 title: "Talk: GitOps with Cloud Build"
 description: "Familiarize and deploy with Cloud Build"
-date: 2021-05-01T08:00:00+08:00
+date: 2020-07-21T08:00:00+08:00
 images:
 - blog/talk-gitops-with-cloud-build/meta.png
 summary: In this talk, I will show you how to use Cloud Build to deploy applications in GitOps fashion.

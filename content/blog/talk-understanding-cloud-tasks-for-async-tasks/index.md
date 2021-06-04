@@ -1,7 +1,7 @@
 ---
 title: "Talk: Understanding Cloud Tasks for Async Tasks"
 description: "Use Cloud Tasks to manage asynchronous tasks."
-date: 2021-06-04T08:00:00+08:00
+date: 2020-08-04T08:00:00+08:00
 images:
 - blog/talk-understanding-cloud-tasks-for-async-tasks/meta.jpeg
 summary: In this talk, I will show you how to use Cloud Tasks to manage queues of background tasks.
