@@ -10,6 +10,7 @@ tags:
   - jenkins
   - gke
   - google cloud
+  - "Talks"
 toc: false
 ---
 ## Introduction

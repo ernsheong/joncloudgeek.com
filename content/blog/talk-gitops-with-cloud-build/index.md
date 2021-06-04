@@ -10,6 +10,7 @@ tags:
   - gitops
   - cloud build
   - google cloud
+  - "Talks"
 toc: false
 ---
 

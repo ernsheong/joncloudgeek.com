@@ -11,6 +11,11 @@
         "source": "/books/",
         "destination": "/store/",
         "type": 301
+      },
+      {
+        "source": "/talks/",
+        "destination": "/tags/talks/",
+        "type": 302
       }
     ]
   }
