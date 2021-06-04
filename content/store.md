@@ -21,7 +21,7 @@ View all my products on sale at **https://store.joncloudgeek.com**
     <p class="font-bold">Get it:</p>
     <ul>
       <li><a target="_blank" href="https://gumroad.com/l/deploy-nodejs-gcp-book">Book</a></li>
-      <li><a target="_blank" href="https://gumroad.com/l/deploy-nodejs-gcp-course">Course</a></li>
+      <li><a target="_blank" href="https://www.udemy.com/course/deploying-nodejs-on-gcp/">Course</a></li>
       <li><a target="_blank" href="https://gumroad.com/l/deploy-nodejs-gcp-bundle">Book + Course</a></li>
     </ul>
   </div>
