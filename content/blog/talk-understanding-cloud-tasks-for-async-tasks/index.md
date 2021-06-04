@@ -30,3 +30,4 @@ In this talk, I will show you how to use Cloud Tasks to manage queues of backgro
 ## Resources
 
 - [Cloud Tasks](https://cloud.google.com/tasks)
+- [Managing background jobs with Cloud Tasks (blog post)](/blog/managing-background-jobs-with-cloud-tasks/)

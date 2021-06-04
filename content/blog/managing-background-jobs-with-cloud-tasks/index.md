@@ -246,3 +246,8 @@ See [Cloud Tasks versus Cloud Scheduler](https://cloud.google.com/tasks/docs/com
 Cloud Tasks is GCP's fully managed solution for handling queues of background jobs (tasks). It provides rate-limiting and retry capabilities that are not present in Pub/Sub. Before reaching out for Pub/Sub you may want to consider if Cloud Tasks suits your application's use case better.
 
 Cloud Tasks also provides a great alternative to third-party queues such as Resque or Sidekiq, if not better. Unlike these third-party queues, there are no workers or queues to manage; it is serverless apart from the task handlers which you will have to provide.
+
+## Resources
+
+- [Cloud Tasks](https://cloud.google.com/tasks)
+- [Talk: Understanding Cloud Tasks for Async Tasks](/blog/talk-understanding-cloud-tasks-for-async-tasks/)
