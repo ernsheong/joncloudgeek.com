@@ -1,5 +1,5 @@
 ---
-title: "Store"
+title: "Books"
 description: "My ebooks and courses"
 toc: false
 authorbox: false

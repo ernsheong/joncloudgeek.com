@@ -8,8 +8,8 @@
     ],
     "redirects": [
       {
-        "source": "/books/",
-        "destination": "/store/",
+        "source": "/store/",
+        "destination": "/books/",
         "type": 301
       },
       {
