@@ -25,7 +25,7 @@ View all my products on sale at **https://store.joncloudgeek.com**
   </div>
 </div>
 
-<h2 class="font-bold text-2xl mt-8 inline-block">Deploy Node.js on GCP</h2>
+<h2 class="font-bold text-2xl mt-8 inline-block">Deploying Node.js on GCP</h2>
 
 <span class="font-bold text-xl">A Comprehensive Guide to Deploying Node.js on Google Cloud Platform</span>
 
